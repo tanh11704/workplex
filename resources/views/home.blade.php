@@ -429,186 +429,24 @@
                 </div>
             </div>
             <div class="row align-items-center g-3 g-xl-4">
-                <!-- Item -->
-                <div class="col-xl-2 col-lg-3 col-md-4 col-6">
-                    <div class="text-center">
-                        <a href="#" class="d-block rounded bg-white px-2 py-4">
-                            <div
-                                class="text-center mb-2 mx-auto position-relative d-inline-flex align-items-center justify-content-center p-3 bg-light rounded-circle">
-                                <i class="lni lni-laptop-phone fs-5 theme-cl"></i>
-                            </div>
-                            <div class="categories-caption">
-                                <h4 class="fs-6">Software Company</h4>
-                                <span>607 Jobs</span>
-                            </div>
-                        </a>
+                @foreach($categories as $category)
+                    <!-- Item -->
+                    <div class="col-xl-2 col-lg-3 col-md-4 col-6">
+                        <div class="text-center">
+                            <a href="#" class="d-block rounded bg-white px-2 py-4">
+                                <div
+                                    class="text-center mb-2 mx-auto position-relative d-inline-flex align-items-center justify-content-center p-3 bg-light-success rounded-circle fs-4 theme-cl"
+                                >
+                                    {!! $category->icon !!}
+                                </div>
+                                <div class="categories-caption">
+                                    <h4 class="fs-6">{{ $category->title }}</h4>
+                                    <span>607 Jobs</span>
+                                </div>
+                            </a>
+                        </div>
                     </div>
-                </div>
-                <!-- Item -->
-                <div class="col-xl-2 col-lg-3 col-md-4 col-6">
-                    <div class="text-center">
-                        <a href="#" class="d-block rounded bg-white px-2 py-4">
-                            <div
-                                class="text-center mb-2 mx-auto position-relative d-inline-flex align-items-center justify-content-center p-3 bg-light rounded-circle">
-                                <i class="lni lni-laptop-phone fs-5 theme-cl"></i>
-                            </div>
-                            <div class="categories-caption">
-                                <h4 class="fs-6">Software Company</h4>
-                                <span>607 Jobs</span>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <!-- Item -->
-                <div class="col-xl-2 col-lg-3 col-md-4 col-6">
-                    <div class="text-center">
-                        <a href="#" class="d-block rounded bg-white px-2 py-4">
-                            <div
-                                class="text-center mb-2 mx-auto position-relative d-inline-flex align-items-center justify-content-center p-3 bg-light rounded-circle">
-                                <i class="lni lni-laptop-phone fs-5 theme-cl"></i>
-                            </div>
-                            <div class="categories-caption">
-                                <h4 class="fs-6">Software Company</h4>
-                                <span>607 Jobs</span>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <!-- Item -->
-                <div class="col-xl-2 col-lg-3 col-md-4 col-6">
-                    <div class="text-center">
-                        <a href="#" class="d-block rounded bg-white px-2 py-4">
-                            <div
-                                class="text-center mb-2 mx-auto position-relative d-inline-flex align-items-center justify-content-center p-3 bg-light rounded-circle">
-                                <i class="lni lni-laptop-phone fs-5 theme-cl"></i>
-                            </div>
-                            <div class="categories-caption">
-                                <h4 class="fs-6">Software Company</h4>
-                                <span>607 Jobs</span>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <!-- Item -->
-                <div class="col-xl-2 col-lg-3 col-md-4 col-6">
-                    <div class="text-center">
-                        <a href="#" class="d-block rounded bg-white px-2 py-4">
-                            <div
-                                class="text-center mb-2 mx-auto position-relative d-inline-flex align-items-center justify-content-center p-3 bg-light rounded-circle">
-                                <i class="lni lni-laptop-phone fs-5 theme-cl"></i>
-                            </div>
-                            <div class="categories-caption">
-                                <h4 class="fs-6">Software Company</h4>
-                                <span>607 Jobs</span>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <!-- Item -->
-                <div class="col-xl-2 col-lg-3 col-md-4 col-6">
-                    <div class="text-center">
-                        <a href="#" class="d-block rounded bg-white px-2 py-4">
-                            <div
-                                class="text-center mb-2 mx-auto position-relative d-inline-flex align-items-center justify-content-center p-3 bg-light rounded-circle">
-                                <i class="lni lni-laptop-phone fs-5 theme-cl"></i>
-                            </div>
-                            <div class="categories-caption">
-                                <h4 class="fs-6">Software Company</h4>
-                                <span>607 Jobs</span>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <!-- Item -->
-                <div class="col-xl-2 col-lg-3 col-md-4 col-6">
-                    <div class="text-center">
-                        <a href="#" class="d-block rounded bg-white px-2 py-4">
-                            <div
-                                class="text-center mb-2 mx-auto position-relative d-inline-flex align-items-center justify-content-center p-3 bg-light rounded-circle">
-                                <i class="lni lni-laptop-phone fs-5 theme-cl"></i>
-                            </div>
-                            <div class="categories-caption">
-                                <h4 class="fs-6">Software Company</h4>
-                                <span>607 Jobs</span>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <!-- Item -->
-                <div class="col-xl-2 col-lg-3 col-md-4 col-6">
-                    <div class="text-center">
-                        <a href="#" class="d-block rounded bg-white px-2 py-4">
-                            <div
-                                class="text-center mb-2 mx-auto position-relative d-inline-flex align-items-center justify-content-center p-3 bg-light rounded-circle">
-                                <i class="lni lni-laptop-phone fs-5 theme-cl"></i>
-                            </div>
-                            <div class="categories-caption">
-                                <h4 class="fs-6">Software Company</h4>
-                                <span>607 Jobs</span>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <!-- Item -->
-                <div class="col-xl-2 col-lg-3 col-md-4 col-6">
-                    <div class="text-center">
-                        <a href="#" class="d-block rounded bg-white px-2 py-4">
-                            <div
-                                class="text-center mb-2 mx-auto position-relative d-inline-flex align-items-center justify-content-center p-3 bg-light rounded-circle">
-                                <i class="lni lni-laptop-phone fs-5 theme-cl"></i>
-                            </div>
-                            <div class="categories-caption">
-                                <h4 class="fs-6">Software Company</h4>
-                                <span>607 Jobs</span>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <!-- Item -->
-                <div class="col-xl-2 col-lg-3 col-md-4 col-6">
-                    <div class="text-center">
-                        <a href="#" class="d-block rounded bg-white px-2 py-4">
-                            <div
-                                class="text-center mb-2 mx-auto position-relative d-inline-flex align-items-center justify-content-center p-3 bg-light rounded-circle">
-                                <i class="lni lni-laptop-phone fs-5 theme-cl"></i>
-                            </div>
-                            <div class="categories-caption">
-                                <h4 class="fs-6">Software Company</h4>
-                                <span>607 Jobs</span>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <!-- Item -->
-                <div class="col-xl-2 col-lg-3 col-md-4 col-6">
-                    <div class="text-center">
-                        <a href="#" class="d-block rounded bg-white px-2 py-4">
-                            <div
-                                class="text-center mb-2 mx-auto position-relative d-inline-flex align-items-center justify-content-center p-3 bg-light rounded-circle">
-                                <i class="lni lni-laptop-phone fs-5 theme-cl"></i>
-                            </div>
-                            <div class="categories-caption">
-                                <h4 class="fs-6">Software Company</h4>
-                                <span>607 Jobs</span>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <!-- Item -->
-                <div class="col-xl-2 col-lg-3 col-md-4 col-6">
-                    <div class="text-center">
-                        <a href="#" class="d-block rounded bg-white px-2 py-4">
-                            <div
-                                class="text-center mb-2 mx-auto position-relative d-inline-flex align-items-center justify-content-center p-3 bg-light rounded-circle">
-                                <i class="lni lni-laptop-phone fs-5 theme-cl"></i>
-                            </div>
-                            <div class="categories-caption">
-                                <h4 class="fs-6">Software Company</h4>
-                                <span>607 Jobs</span>
-                            </div>
-                        </a>
-                    </div>
-                </div>
+                @endforeach
             </div>
             <div class="row justify-content-center">
                 <div class="col-12 mt-5">
