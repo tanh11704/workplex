@@ -20,11 +20,11 @@
                             blanditiis praesentium voluptatum deleniti atque
                         </p>
                     </div>
-                    <form action="" class="bg-white rounded p-1">
+                    <form action="{{ url('/job-search') }}" class="bg-white rounded p-1">
                         <div class="row gx-0">
                             <div class="col-12 col-md-5">
                                 <div class="form-group mb-0 position-relative">
-                                    <input type="text" name="" id="" class="form-control lg shadow-none"
+                                    <input type="text" name="name" id="" class="form-control lg shadow-none"
                                         style="
                       padding-left: 32px;
                       border: 0;
@@ -36,20 +36,20 @@
                             </div>
                             <div class="col-xl-5 col-lg-4 col-md-4 col-sm-12 col-12">
                                 <div class="form-group mb-0 position-relative">
-                                    <select class="form-control shadow-none lg border-0">
-                                        <option value="1">Choose Categories</option>
-                                        <option value="2">Information Technology</option>
-                                        <option value="3">Cloud Computing</option>
-                                        <option value="4">Engineering Services</option>
-                                        <option value="5">Healthcare/Pharma</option>
-                                        <option value="6">Telecom/ Internet</option>
-                                        <option value="7">Finance/Insurance</option>
+                                    <select class="form-control shadow-none lg border-0" name="category">
+                                        <option value="0">Choose Categories</option>
+                                        @foreach($allCategories as $category)
+                                            <option value="{{ $category->id }}">{{ $category->title }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>
                             <div class="col-12 col-md-3 col-xl-2">
                                 <div class="form-group mb-0 position-relative d-flex">
-                                    <button class="btn w-100 theme-bg custom-height-lg text-white fs-6 shadow-none">
+                                    <button
+                                        type="submit"
+                                        class="btn w-100 theme-bg custom-height-lg text-white fs-6 shadow-none"
+                                    >
                                         Find Job
                                     </button>
                                 </div>
@@ -146,267 +146,58 @@
                     </div>
                 </div>
                 <div class="row align-items-center g-xl-4 g-lg-3 g-md-3 g-3">
-                    <!-- Item -->
-                    <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
-                        <div class="position-relative d-block bg-white text-start border rounded">
-                            <div class="rounded bg-white d-flex align-items-center justify-content-between px-3 py-3">
-                                <div class="rounded bg-white d-flex align-items-center">
-                                    <div class="text-center">
-                                        <img src="{{ asset('assets/img/c-16.png') }}" class="img-fluid" width="55"
-                                            alt="" />
-                                    </div>
-                                    <div class="px-2">
-                                        <h4 class="mb-0 fs-6 text-black">
-                                            Fresher UI/UX Designer (3 Year Exp.)
-                                        </h4>
-                                        <div class="d-block mb-2 position-relative">
+                    @foreach($jobs as $job)
+                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                            <div class="position-relative d-block bg-white text-start border rounded">
+                                <div class="rounded bg-white d-flex align-items-center justify-content-between px-3 py-3">
+                                    <div class="rounded bg-white d-flex align-items-center">
+                                        <div class="text-center">
+                                            <img src="{{ asset('assets/img/' . $job->image) }}" class="img-fluid" width="55"
+                                                 alt="" />
+                                        </div>
+                                        <div class="px-2">
+                                            <h4 class="mb-0 fs-6 text-black">
+                                                {{ $job->title }}
+                                            </h4>
+                                            <div class="d-block mb-2 position-relative">
                                             <span>
-                                                <i class="lni lni-map-marker me-1"></i>
-                                                Liverpool, London
+                                                <i class="lni lni-map-marker"></i>
+                                                {{ $job->city }}, {{ $job->country }}
                                             </span>
-                                            <span class="ms-2 theme-cl"><i class="lni lni-briefcase me-1"></i>Full
-                                                Time</span>
+                                                <span class="ms-2 theme-cl">
+                                                    <i class="lni lni-briefcase me-1"></i> {{ $job->type }}
+                                                </span>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="text-center">
-                                    <a href="#" class="btn rounded apply-btn">
-                                        Apply Job
-                                        <i class="lni lni-arrow-right-circle ms-1"></i>
-                                    </a>
+                                    <div class="text-center">
+                                        <form action="{{ route('jobs.apply') }}" method="post">
+                                            @if($job->hasApplied(Auth::user()->id))
+                                                @csrf
+                                                <input type="hidden" name="job_id" type="text" value="{{ $job->id }}">
+                                                <input type="hidden" name="user_id" type="text" value="{{ Auth::user()->id }}">
+                                                <input type="hidden" name="cv" value="{{ Auth::user()->cv }}">
+                                                <button class="btn rounded apply-btn" disabled>
+                                                    Job Applied
+                                                    <i class="lni lni-arrow-right-circle ms-1"></i>
+                                                </button>
+                                            @else
+                                                <button type="submit" class="btn rounded apply-btn">
+                                                    Apply Job
+                                                    <i class="lni lni-arrow-right-circle ms-1"></i>
+                                                </button>
+                                           @endif
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <!-- Item -->
-                    <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
-                        <div class="position-relative d-block bg-white text-start border rounded">
-                            <div class="rounded bg-white d-flex align-items-center justify-content-between px-3 py-3">
-                                <div class="rounded bg-white d-flex align-items-center">
-                                    <div class="text-center">
-                                        <img src="{{ asset('assets/img/c-16.png') }}" class="img-fluid" width="55"
-                                            alt="" />
-                                    </div>
-                                    <div class="px-2">
-                                        <h4 class="mb-0 fs-6 text-black">
-                                            Fresher UI/UX Designer (3 Year Exp.)
-                                        </h4>
-                                        <div class="d-block mb-2 position-relative">
-                                            <span>
-                                                <i class="lni lni-map-marker me-1"></i>
-                                                Liverpool, London
-                                            </span>
-                                            <span class="ms-2 theme-cl"><i class="lni lni-briefcase me-1"></i>Full
-                                                Time</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="text-center">
-                                    <a href="#" class="btn rounded apply-btn">
-                                        Apply Job
-                                        <i class="lni lni-arrow-right-circle ms-1"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Item -->
-                    <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
-                        <div class="position-relative d-block bg-white text-start border rounded">
-                            <div class="rounded bg-white d-flex align-items-center justify-content-between px-3 py-3">
-                                <div class="rounded bg-white d-flex align-items-center">
-                                    <div class="text-center">
-                                        <img src="{{ asset('assets/img/c-16.png') }}" class="img-fluid" width="55"
-                                            alt="" />
-                                    </div>
-                                    <div class="px-2">
-                                        <h4 class="mb-0 fs-6 text-black">
-                                            Fresher UI/UX Designer (3 Year Exp.)
-                                        </h4>
-                                        <div class="d-block mb-2 position-relative">
-                                            <span>
-                                                <i class="lni lni-map-marker me-1"></i>
-                                                Liverpool, London
-                                            </span>
-                                            <span class="ms-2 theme-cl"><i class="lni lni-briefcase me-1"></i>Full
-                                                Time</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="text-center">
-                                    <a href="#" class="btn rounded apply-btn">
-                                        Apply Job
-                                        <i class="lni lni-arrow-right-circle ms-1"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Item -->
-                    <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
-                        <div class="position-relative d-block bg-white text-start border rounded">
-                            <div class="rounded bg-white d-flex align-items-center justify-content-between px-3 py-3">
-                                <div class="rounded bg-white d-flex align-items-center">
-                                    <div class="text-center">
-                                        <img src="{{ asset('assets/img/c-16.png') }}" class="img-fluid" width="55"
-                                            alt="" />
-                                    </div>
-                                    <div class="px-2">
-                                        <h4 class="mb-0 fs-6 text-black">
-                                            Fresher UI/UX Designer (3 Year Exp.)
-                                        </h4>
-                                        <div class="d-block mb-2 position-relative">
-                                            <span>
-                                                <i class="lni lni-map-marker me-1"></i>
-                                                Liverpool, London
-                                            </span>
-                                            <span class="ms-2 theme-cl"><i class="lni lni-briefcase me-1"></i>Full
-                                                Time</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="text-center">
-                                    <a href="#" class="btn rounded apply-btn">
-                                        Apply Job
-                                        <i class="lni lni-arrow-right-circle ms-1"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Item -->
-                    <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
-                        <div class="position-relative d-block bg-white text-start border rounded">
-                            <div class="rounded bg-white d-flex align-items-center justify-content-between px-3 py-3">
-                                <div class="rounded bg-white d-flex align-items-center">
-                                    <div class="text-center">
-                                        <img src="{{ asset('assets/img/c-16.png') }}" class="img-fluid" width="55"
-                                            alt="" />
-                                    </div>
-                                    <div class="px-2">
-                                        <h4 class="mb-0 fs-6 text-black">
-                                            Fresher UI/UX Designer (3 Year Exp.)
-                                        </h4>
-                                        <div class="d-block mb-2 position-relative">
-                                            <span>
-                                                <i class="lni lni-map-marker me-1"></i>
-                                                Liverpool, London
-                                            </span>
-                                            <span class="ms-2 theme-cl"><i class="lni lni-briefcase me-1"></i>Full
-                                                Time</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="text-center">
-                                    <a href="#" class="btn rounded apply-btn">
-                                        Apply Job
-                                        <i class="lni lni-arrow-right-circle ms-1"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Item -->
-                    <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
-                        <div class="position-relative d-block bg-white text-start border rounded">
-                            <div class="rounded bg-white d-flex align-items-center justify-content-between px-3 py-3">
-                                <div class="rounded bg-white d-flex align-items-center">
-                                    <div class="text-center">
-                                        <img src="{{ asset('assets/img/c-16.png') }}" class="img-fluid" width="55"
-                                            alt="" />
-                                    </div>
-                                    <div class="px-2">
-                                        <h4 class="mb-0 fs-6 text-black">
-                                            Fresher UI/UX Designer (3 Year Exp.)
-                                        </h4>
-                                        <div class="d-block mb-2 position-relative">
-                                            <span>
-                                                <i class="lni lni-map-marker me-1"></i>
-                                                Liverpool, London
-                                            </span>
-                                            <span class="ms-2 theme-cl"><i class="lni lni-briefcase me-1"></i>Full
-                                                Time</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="text-center">
-                                    <a href="#" class="btn rounded apply-btn">
-                                        Apply Job
-                                        <i class="lni lni-arrow-right-circle ms-1"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Item -->
-                    <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
-                        <div class="position-relative d-block bg-white text-start border rounded">
-                            <div class="rounded bg-white d-flex align-items-center justify-content-between px-3 py-3">
-                                <div class="rounded bg-white d-flex align-items-center">
-                                    <div class="text-center">
-                                        <img src="{{ asset('assets/img/c-16.png') }}" class="img-fluid" width="55"
-                                            alt="" />
-                                    </div>
-                                    <div class="px-2">
-                                        <h4 class="mb-0 fs-6 text-black">
-                                            Fresher UI/UX Designer (3 Year Exp.)
-                                        </h4>
-                                        <div class="d-block mb-2 position-relative">
-                                            <span>
-                                                <i class="lni lni-map-marker me-1"></i>
-                                                Liverpool, London
-                                            </span>
-                                            <span class="ms-2 theme-cl"><i class="lni lni-briefcase me-1"></i>Full
-                                                Time</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="text-center">
-                                    <a href="#" class="btn rounded apply-btn">
-                                        Apply Job
-                                        <i class="lni lni-arrow-right-circle ms-1"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Item -->
-                    <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
-                        <div class="position-relative d-block bg-white text-start border rounded">
-                            <div class="rounded bg-white d-flex align-items-center justify-content-between px-3 py-3">
-                                <div class="rounded bg-white d-flex align-items-center">
-                                    <div class="text-center">
-                                        <img src="{{ asset('assets/img/c-16.png') }}" class="img-fluid" width="55"
-                                            alt="" />
-                                    </div>
-                                    <div class="px-2">
-                                        <h4 class="mb-0 fs-6 text-black">
-                                            Fresher UI/UX Designer (3 Year Exp.)
-                                        </h4>
-                                        <div class="d-block mb-2 position-relative">
-                                            <span>
-                                                <i class="lni lni-map-marker me-1"></i>
-                                                Liverpool, London
-                                            </span>
-                                            <span class="ms-2 theme-cl"><i class="lni lni-briefcase me-1"></i>Full
-                                                Time</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="text-center">
-                                    <a href="#" class="btn rounded apply-btn">
-                                        Apply Job
-                                        <i class="lni lni-arrow-right-circle ms-1"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
                 <div class="row justify-content-center">
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mt-5">
                         <div class="position-relative text-center">
-                            <a href="#"
+                            <a href="{{ url('/job-search') }}"
                                 class="btn theme-bg rounded text-light hover-theme py-3 px-4 shadow-none">Explore More
                                 Jobs<i class="lni lni-arrow-right-circle ms-2"></i></a>
                         </div>
@@ -433,7 +224,7 @@
                     <!-- Item -->
                     <div class="col-xl-2 col-lg-3 col-md-4 col-6">
                         <div class="text-center">
-                            <a href="#" class="d-block rounded bg-white px-2 py-4">
+                            <a href="{{ url('/job-search?category=' . $category->id) }}" class="d-block rounded bg-white px-2 py-4">
                                 <div
                                     class="text-center mb-2 mx-auto position-relative d-inline-flex align-items-center justify-content-center p-3 bg-light-success rounded-circle fs-4 theme-cl"
                                 >
@@ -441,7 +232,7 @@
                                 </div>
                                 <div class="categories-caption">
                                     <h4 class="fs-6">{{ $category->title }}</h4>
-                                    <span>607 Jobs</span>
+                                    <span>{{ $category->jobs_count }}</span>
                                 </div>
                             </a>
                         </div>

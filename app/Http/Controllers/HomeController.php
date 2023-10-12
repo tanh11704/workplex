@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Job;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -24,10 +25,23 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $categories = Category::select()->take(12)->get();
+        $allCategories = Category::all();
+        $categories = Category::withCount('jobs')->paginate(12);
+        $jobs = Job::paginate(8);
 
 
         return view('home')
-            ->with('categories', $categories);
+            ->with('allCategories', $allCategories)
+            ->with('categories', $categories)
+            ->with('jobs', $jobs);
+
+    }
+
+    public function contactUs() {
+        return view('contact-us');
+    }
+
+    public function privacy() {
+        return view('privacy');
     }
 }

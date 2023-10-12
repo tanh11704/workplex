@@ -5,22 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Category extends Model
+class AppliedJob extends Model
 {
     use HasFactory;
 
-    protected $table = 'category';
+    protected $table = 'applied_jobs';
     protected $primaryKey = 'id';
 
     protected $fillable = [
-        'title',
-        'icon'
+        'job_id',
+        'user_id',
+        'cv'
     ];
 
     public $timestamps = true;
-
-    public function jobs()
-    {
-        return $this->hasMany(Job::class);
-    }
 }

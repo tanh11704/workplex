@@ -128,13 +128,13 @@
                                 <a href="#">Security</a>
                             </li>
                             <li class="mt-3 d-block">
-                                <a href="#">Contact</a>
+                                <a href="{{ route('contactUs') }}">Contact</a>
                             </li>
                             <li class="mt-3 d-block">
                                 <a href="#">FAQ's Page</a>
                             </li>
                             <li class="mt-3 d-block">
-                                <a href="#">Privacy</a>
+                                <a href="{{ route('privacy') }}">Privacy</a>
                             </li>
                         </ul>
                     </div>

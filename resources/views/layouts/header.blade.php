@@ -12,12 +12,12 @@
             <div class="collapse navbar-collapse" id="collapsibleNavId">
                 <ul class="navbar-nav me-auto mt-2 mt-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="{{ url('/home') }}">
+                        <a class="nav-link" aria-current="page" href="{{ url('/') }}">
                             Home <i class="ti-angle-double-down fs-"></i>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="{{ url('/job-search') }}">
                             Find Job <i class="ti-angle-double-down fs-"></i>
                         </a>
                     </li>
