@@ -191,6 +191,8 @@ select.form-control:focus {
   display: flex;
   align-items: center;
   justify-content: center;
+  background-image: url('');
+  background-size: cover;
 }
 
 .custom-file-input {

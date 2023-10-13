@@ -46,7 +46,7 @@
                       <span
                           class="px-2 py-1 ft-medium medium text-light theme-bg rounded me-2"
                       >
-                          {{ $job->type }}
+                          {{ $job->jobType->type }}
                       </span>
                                 </div>
                             </div>

@@ -35,3 +35,7 @@ Route::post('/single-job/apply', [\App\Http\Controllers\JobsController::class, '
 
 //Dashboad
 Route::get('/dashboard', [\App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('dashboard');
+Route::get('/dashboard/myprofile', [\App\Http\Controllers\Admin\UserController::class, 'myProfile'])->name('myProfile');
+Route::put('/dashboard/update-profile', [\App\Http\Controllers\Admin\UserController::class, 'update'])->name('user.update');
+Route::put('/dashboard/update-profile/contact', [\App\Http\Controllers\Admin\UserController::class, 'updateContact'])->name('user.updateContact');
+Route::put('/dashboard/update-profile/social', [\App\Http\Controllers\Admin\UserController::class, 'updateSocial'])->name('user.updateSocial');

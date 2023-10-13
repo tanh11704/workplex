@@ -14,7 +14,7 @@
                 <div class="row">
                     <div class="col-lg-3 col-6">
                         <div class="dash-widgets py-5 px-4 bg-info rounded">
-                            <h2 class="ft-medium mb-1 fs-xl text-light">46</h2>
+                            <h2 class="ft-medium mb-1 fs-xl text-light">{{ $appliedJobs }}</h2>
                             <p class="p-0 m-0 text-light fs-md">Applied Jobs</p>
                             <i class="lni lni-empty-file"></i>
                         </div>
@@ -35,7 +35,7 @@
                     </div>
                     <div class="col-lg-3 col-6">
                         <div class="dash-widgets py-5 px-4 bg-purple rounded">
-                            <h2 class="ft-medium mb-1 fs-xl text-light">32</h2>
+                            <h2 class="ft-medium mb-1 fs-xl text-light">{{ $savedJobs }}</h2>
                             <p class="p-0 m-0 text-light fs-md">Bookmark jobs</p>
                             <i class="lni lni-heart"></i>
                         </div>

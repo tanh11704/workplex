@@ -5,26 +5,20 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Category extends Model
+class Experience extends Model
 {
     use HasFactory;
 
-    protected $table = 'category';
+    protected $table = 'experience';
     protected $primaryKey = 'id';
 
     protected $fillable = [
         'title',
-        'icon'
     ];
 
     public $timestamps = true;
 
-    public function jobs()
-    {
-        return $this->hasMany(Job::class);
-    }
-
-    public static function getCategories()
+    public static function getExperiences()
     {
         return static::pluck('title', 'id')->all();
     }

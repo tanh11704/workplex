@@ -48,7 +48,7 @@
                 </ul>
                 <ul data-submenu-title="My Accounts">
                     <li>
-                        <a href="dashboard-my-profile.html"
+                        <a href="{{ route('myProfile') }}"
                         ><i class="lni lni-user me-2"></i>My Profile
                         </a>
                     </li>

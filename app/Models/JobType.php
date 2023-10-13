@@ -5,17 +5,21 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class SavedJob extends Model
+class JobType extends Model
 {
     use HasFactory;
 
-    protected $table = 'saved_job';
+    protected $table = 'job_types';
     protected $primaryKey = 'id';
 
     protected $fillable = [
-        'job_id',
-        'user_id',
+        'type',
     ];
 
     public $timestamps = true;
+
+    public static function getJobTypes()
+    {
+        return static::pluck('type', 'id')->all();
+    }
 }

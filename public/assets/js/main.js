@@ -59,3 +59,24 @@ $(".review-slide").slick({
         },
     ],
 });
+
+function updateLabel(input) {
+    const label = input.nextElementSibling; // Lấy đối tượng label kế tiếp
+    if (input.files && input.files[0]) {
+        const reader = new FileReader();
+
+        reader.onload = function(e) {
+            label.style.backgroundImage = `url(${e.target.result})`;
+        };
+
+        reader.readAsDataURL(input.files[0]);
+
+        // Ẩn biểu tượng khi có ảnh đã chọn
+        label.querySelector('i.fa-user').style.display = 'none';
+    } else {
+        label.style.backgroundImage = null; // Xóa ảnh nền nếu không có tệp nào được chọn
+
+        // Hiển thị biểu tượng khi không có ảnh đã chọn
+        label.querySelector('i.fa-user').style.display = 'block';
+    }
+}

@@ -55,4 +55,9 @@ class Job extends Model
     {
         return $this->appliedJobs()->where('user_id', $userId)->exists();
     }
+
+    public function jobType()
+    {
+        return $this->belongsTo(JobType::class, 'type');
+    }
 }
