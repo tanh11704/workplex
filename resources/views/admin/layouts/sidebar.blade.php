@@ -13,13 +13,13 @@
         <div class="dashboard-nav">
             <div class="dashboard-inner">
                 <ul data-submenu-title="Candidate">
-                    <li class="active">
-                        <a href="candidate-dashboard.html"
+                    <li class="{{ \Illuminate\Support\Facades\Route::currentRouteName() === 'dashboard' ? 'active' : '' }}">
+                        <a href="{{ route('dashboard') }}"
                         ><i class="lni lni-dashboard me-2"></i>Dashboard
                         </a>
                     </li>
-                    <li>
-                        <a href="dashboard-saved-jobs.html">
+                    <li class="{{ \Illuminate\Support\Facades\Route::currentRouteName() === 'user.bookmark-jobs' ? 'active' : '' }}">
+                        <a href="{{ route('user.bookmark-jobs') }}">
                             <i class="lni lni-bookmark me-2"></i>Bookmark Jobs
                         </a>
                     </li>
@@ -47,20 +47,23 @@
                     </li>
                 </ul>
                 <ul data-submenu-title="My Accounts">
-                    <li>
+                    <li class="{{ \Illuminate\Support\Facades\Route::currentRouteName() === 'myProfile' ? 'active' : '' }}">
                         <a href="{{ route('myProfile') }}"
                         ><i class="lni lni-user me-2"></i>My Profile
                         </a>
                     </li>
-                    <li>
-                        <a href="dashboard-change-password.html"
+                    <li class="{{ \Illuminate\Support\Facades\Route::currentRouteName() === 'change-password' ? 'active' : '' }}">
+                        <a href="{{ route('change-password') }}"
                         ><i class="lni lni-lock-alt me-2"></i>Change Password</a
                         >
                     </li>
                     <li>
-                        <a href="login.html"
-                        ><i class="lni lni-power-switch me-2"></i>Log Out</a
+                        <a href="{{ route('logout') }}"
+                           onclick="event.preventDefault();
+                           document.getElementById('logout-form').submit();"
                         >
+                            <i class="lni lni-power-switch me-2"></i>Log Out
+                        </a>
                     </li>
                 </ul>
             </div>

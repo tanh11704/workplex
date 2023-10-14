@@ -20,4 +20,8 @@ class DashboardController extends Controller
             ->with('savedJobs', $savedJobs)
             ->with('appliedJobs', $appliedJobs);
     }
+
+    public function changePassword() {
+        return view('admin.change-password');
+    }
 }

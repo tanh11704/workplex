@@ -35,7 +35,15 @@ Route::post('/single-job/apply', [\App\Http\Controllers\JobsController::class, '
 
 //Dashboad
 Route::get('/dashboard', [\App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('dashboard');
+//My Profile
 Route::get('/dashboard/myprofile', [\App\Http\Controllers\Admin\UserController::class, 'myProfile'])->name('myProfile');
 Route::put('/dashboard/update-profile', [\App\Http\Controllers\Admin\UserController::class, 'update'])->name('user.update');
 Route::put('/dashboard/update-profile/contact', [\App\Http\Controllers\Admin\UserController::class, 'updateContact'])->name('user.updateContact');
 Route::put('/dashboard/update-profile/social', [\App\Http\Controllers\Admin\UserController::class, 'updateSocial'])->name('user.updateSocial');
+//Bookmark Jobs
+Route::get('/dashboard/bookmark-jobs', [\App\Http\Controllers\Admin\SavedJobsController::class, 'index'])->name('user.bookmark-jobs');
+
+//Change Password
+Route::get('/dashboard/change-password', [\App\Http\Controllers\Admin\DashboardController::class, 'changePassword'])->name('change-password');
+Route::put('/dashboard/change-password', [\App\Http\Controllers\Auth\ChangePasswordController::class, 'changePassword'])->name('user.changePassword');
+

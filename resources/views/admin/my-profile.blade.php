@@ -24,6 +24,20 @@
                                 @csrf
                                 @method('put')
                                 <div class="col-12 col-md-3">
+                                    <div class="custom-file avatar_uploads">
+                                        <input
+                                            type="file"
+                                            name="avatar"
+                                            class="custom-file-input"
+                                            id="customFile"
+                                            onchange="updateLabel(this)"
+                                        />
+                                        <label class="custom-file-label" for="customFile" style="background-image: url('{{ $user->getAvatarPath() }}')">
+                                            @if($user->avatar === '')
+                                                <i class="fa fa-user"></i>
+                                            @endif
+                                        </label>
+                                    </div>
                                 </div>
                                 <div class="col-12 col-md-9">
                                     <div class="row">

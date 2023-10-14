@@ -30,9 +30,8 @@ class UserController extends Controller
 
         if ($request->hasFile('avatar')) {
             $avatar = $request->file('avatar');
-            $fileName = $avatar->getClientOriginalName();
-            $avatar->storeAs('avatars', $fileName);
-            $user->avatar = $fileName;
+            $imagePath = $avatar->store('avatars', 'public');
+            $user->avatar = $imagePath;
         }
 
         $user->name = $request->input('name');

@@ -51,4 +51,10 @@ class User extends Authenticatable
     public function appliedJobs() {
         return $this->hasMany(AppliedJob::class);
     }
+
+    // Model
+    public function getAvatarPath()
+    {
+        return asset('storage/' . $this->avatar);
+    }
 }
