@@ -22,4 +22,9 @@ class Experience extends Model
     {
         return static::pluck('title', 'id')->all();
     }
+
+    public function jobs()
+    {
+        return $this->hasMany(Job::class, 'experience_id');
+    }
 }

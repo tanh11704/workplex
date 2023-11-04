@@ -18,301 +18,77 @@
                         <span class="text-dark fw-bold">26</span> jobs
                     </p>
                 </div>
+                    @if(session('delete'))
+                    <div class="alert alert-success col-12">
+                        <strong>Success!</strong> {{ session('delete') }}
+                    </div>
+                    @endif
                 <div class="col-12">
                     <div class="mb-4 rounded overflow-auto">
                         <div>
                             <table class="table bg-white">
                                 <thead class="thead-dark">
-                                <tr>
-                                    <th scope="col">Job Title</th>
-                                    <th scope="col">Status</th>
-                                    <th scope="col">Applied Date</th>
-                                    <th scope="col">Action</th>
-                                </tr>
+                                    <tr>
+                                        <th scope="col">Job Title</th>
+                                        <th scope="col">Status</th>
+                                        <th scope="col">Applied Date</th>
+                                        <th scope="col">Action</th>
+                                    </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
-                                    <td>
-                                        <div
-                                            class="cats-box rounded bg-white d-flex align-items-center"
-                                        >
-                                            <div class="text-center">
-                                                <img
-                                                    src="../img/c-1.png"
-                                                    class="img-fluid"
-                                                    width="55"
-                                                    alt=""
-                                                />
-                                            </div>
-                                            <div class="px-2">
-                                                <h4 class="fs-6 mb-1">
-                                                    Fresher UI/UX Designer (3 Year Exp.)
-                                                </h4>
-                                                <div class="d-block mb-2 position-relative">
-                                  <span>
-                                    <i class="lni lni-map-marker me-1"></i
-                                    >Liverpool, London
-                                  </span>
-                                                    <span class="ms-2 theme-cl">
-                                    <i class="lni lni-briefcase me-1"></i>
-                                    Full Time
-                                  </span>
+                                    @foreach ($savedJobs as $job)
+                                        <tr>
+                                            <td>
+                                                <div class="cats-box rounded bg-white d-flex align-items-center">
+                                                    <div class="text-center">
+                                                        <img src="{{ $job->job->getJobPath() }}"
+                                                            class="img-fluid" width="55" alt="" />
+                                                    </div>
+                                                    <div class="px-2">
+                                                        <h4 class="fs-6 mb-1">
+                                                            {{ $job->job->title }}
+                                                        </h4>
+                                                        <div class="d-block mb-2 position-relative">
+                                                            <span>
+                                                                <i class="lni lni-map-marker me-1"></i>
+                                                                {{ $job->job->city }}, {{ $job->job->country }}
+                                                            </span>
+                                                            <span class="ms-2 theme-cl">
+                                                                <i class="lni lni-briefcase me-1"></i>
+                                                                {{ $job->job->jobType->type }}
+                                                            </span>
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <span class="text-info">Active</span>
-                                    </td>
-                                    <td>10 Sep 2021</td>
-                                    <td>
-                                        <a
-                                            class="p-2 rounded-circle text-info bg-light-info d-inline-flex align-items-center justify-content-center me-1"
-                                        >
-                                            <i class="lni lni-eye"></i>
-                                        </a>
-                                        <a
-                                            class="p-2 rounded-circle text-danger bg-light-danger d-inline-flex align-items-center justify-content-center ms-1"
-                                        >
-                                            <i class="lni lni-trash-can"></i>
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div
-                                            class="cats-box rounded bg-white d-flex align-items-center"
-                                        >
-                                            <div class="text-center">
-                                                <img
-                                                    src="../img/c-1.png"
-                                                    class="img-fluid"
-                                                    width="55"
-                                                    alt=""
-                                                />
-                                            </div>
-                                            <div class="px-2">
-                                                <h4 class="fs-6 mb-1">
-                                                    Fresher UI/UX Designer (3 Year Exp.)
-                                                </h4>
-                                                <div class="d-block mb-2 position-relative">
-                                  <span>
-                                    <i class="lni lni-map-marker me-1"></i
-                                    >Liverpool, London
-                                  </span>
-                                                    <span class="ms-2 theme-cl">
-                                    <i class="lni lni-briefcase me-1"></i>
-                                    Full Time
-                                  </span>
+                                            </td>
+                                            <td>
+                                                @if($job->job->applicant_limit == $job->job->applicant_current)
+                                                    <span class="text-danger">inactive</span>
+                                                @else
+                                                    <span class="text-info">active</span>
+                                                @endif
+                                            </td>
+                                            <td>{{ \Illuminate\Support\Carbon::parse($job->created_at)->format('d M Y') }}</td>
+                                            <td>
+                                                <div class="d-flex">
+                                                    <a href="{{ route('single-job', ['id' => $job->job_id]) }}"
+                                                       class="p-2 rounded-circle text-info bg-light-info d-inline-flex align-items-center justify-content-center me-1">
+                                                        <i class="lni lni-eye"></i>
+                                                    </a>
+                                                    <form action="{{ route('savedJob.delete', ['id' => $job->id]) }}" method="post">
+                                                        @csrf
+                                                        @method('delete')
+                                                        <input type="hidden" name="id" value="{{ $job->id }}">
+                                                        <button
+                                                            type="submit"
+                                                            class="p-2 border-0 rounded-circle text-danger bg-light-danger d-inline-flex align-items-center justify-content-center ms-1">
+                                                            <i class="lni lni-trash-can"></i>
+                                                        </button>
+                                                    </form>
                                                 </div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <span class="text-info">Active</span>
-                                    </td>
-                                    <td>10 Sep 2021</td>
-                                    <td>
-                                        <a
-                                            class="p-2 rounded-circle text-info bg-light-info d-inline-flex align-items-center justify-content-center me-1"
-                                        >
-                                            <i class="lni lni-eye"></i>
-                                        </a>
-                                        <a
-                                            class="p-2 rounded-circle text-danger bg-light-danger d-inline-flex align-items-center justify-content-center ms-1"
-                                        >
-                                            <i class="lni lni-trash-can"></i>
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div
-                                            class="cats-box rounded bg-white d-flex align-items-center"
-                                        >
-                                            <div class="text-center">
-                                                <img
-                                                    src="../img/c-1.png"
-                                                    class="img-fluid"
-                                                    width="55"
-                                                    alt=""
-                                                />
-                                            </div>
-                                            <div class="px-2">
-                                                <h4 class="fs-6 mb-1">
-                                                    Fresher UI/UX Designer (3 Year Exp.)
-                                                </h4>
-                                                <div class="d-block mb-2 position-relative">
-                                  <span>
-                                    <i class="lni lni-map-marker me-1"></i
-                                    >Liverpool, London
-                                  </span>
-                                                    <span class="ms-2 theme-cl">
-                                    <i class="lni lni-briefcase me-1"></i>
-                                    Full Time
-                                  </span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <span class="text-info">Active</span>
-                                    </td>
-                                    <td>10 Sep 2021</td>
-                                    <td>
-                                        <a
-                                            class="p-2 rounded-circle text-info bg-light-info d-inline-flex align-items-center justify-content-center me-1"
-                                        >
-                                            <i class="lni lni-eye"></i>
-                                        </a>
-                                        <a
-                                            class="p-2 rounded-circle text-danger bg-light-danger d-inline-flex align-items-center justify-content-center ms-1"
-                                        >
-                                            <i class="lni lni-trash-can"></i>
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div
-                                            class="cats-box rounded bg-white d-flex align-items-center"
-                                        >
-                                            <div class="text-center">
-                                                <img
-                                                    src="../img/c-1.png"
-                                                    class="img-fluid"
-                                                    width="55"
-                                                    alt=""
-                                                />
-                                            </div>
-                                            <div class="px-2">
-                                                <h4 class="fs-6 mb-1">
-                                                    Fresher UI/UX Designer (3 Year Exp.)
-                                                </h4>
-                                                <div class="d-block mb-2 position-relative">
-                                  <span>
-                                    <i class="lni lni-map-marker me-1"></i
-                                    >Liverpool, London
-                                  </span>
-                                                    <span class="ms-2 theme-cl">
-                                    <i class="lni lni-briefcase me-1"></i>
-                                    Full Time
-                                  </span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <span class="text-info">Active</span>
-                                    </td>
-                                    <td>10 Sep 2021</td>
-                                    <td>
-                                        <a
-                                            class="p-2 rounded-circle text-info bg-light-info d-inline-flex align-items-center justify-content-center me-1"
-                                        >
-                                            <i class="lni lni-eye"></i>
-                                        </a>
-                                        <a
-                                            class="p-2 rounded-circle text-danger bg-light-danger d-inline-flex align-items-center justify-content-center ms-1"
-                                        >
-                                            <i class="lni lni-trash-can"></i>
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div
-                                            class="cats-box rounded bg-white d-flex align-items-center"
-                                        >
-                                            <div class="text-center">
-                                                <img
-                                                    src="../img/c-1.png"
-                                                    class="img-fluid"
-                                                    width="55"
-                                                    alt=""
-                                                />
-                                            </div>
-                                            <div class="px-2">
-                                                <h4 class="fs-6 mb-1">
-                                                    Fresher UI/UX Designer (3 Year Exp.)
-                                                </h4>
-                                                <div class="d-block mb-2 position-relative">
-                                  <span>
-                                    <i class="lni lni-map-marker me-1"></i
-                                    >Liverpool, London
-                                  </span>
-                                                    <span class="ms-2 text-warning">
-                                    <i class="lni lni-briefcase me-1"></i>
-                                    Part time
-                                  </span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <span class="text-info">Active</span>
-                                    </td>
-                                    <td>10 Sep 2021</td>
-                                    <td>
-                                        <a
-                                            class="p-2 rounded-circle text-info bg-light-info d-inline-flex align-items-center justify-content-center me-1"
-                                        >
-                                            <i class="lni lni-eye"></i>
-                                        </a>
-                                        <a
-                                            class="p-2 rounded-circle text-danger bg-light-danger d-inline-flex align-items-center justify-content-center ms-1"
-                                        >
-                                            <i class="lni lni-trash-can"></i>
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div
-                                            class="cats-box rounded bg-white d-flex align-items-center"
-                                        >
-                                            <div class="text-center">
-                                                <img
-                                                    src="../img/c-1.png"
-                                                    class="img-fluid"
-                                                    width="55"
-                                                    alt=""
-                                                />
-                                            </div>
-                                            <div class="px-2">
-                                                <h4 class="fs-6 mb-1">
-                                                    Fresher UI/UX Designer (3 Year Exp.)
-                                                </h4>
-                                                <div class="d-block mb-2 position-relative">
-                                  <span>
-                                    <i class="lni lni-map-marker me-1"></i
-                                    >Liverpool, London
-                                  </span>
-                                                    <span class="ms-2 text-danger">
-                                    <i class="lni lni-briefcase me-1"></i>
-                                    Internship
-                                  </span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <span class="text-info">Active</span>
-                                    </td>
-                                    <td>10 Sep 2021</td>
-                                    <td>
-                                        <a
-                                            class="p-2 rounded-circle text-info bg-light-info d-inline-flex align-items-center justify-content-center me-1"
-                                        >
-                                            <i class="lni lni-eye"></i>
-                                        </a>
-                                        <a
-                                            class="p-2 rounded-circle text-danger bg-light-danger d-inline-flex align-items-center justify-content-center ms-1"
-                                        >
-                                            <i class="lni lni-trash-can"></i>
-                                        </a>
-                                    </td>
-                                </tr>
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
@@ -321,35 +97,7 @@
             </div>
             <div class="row">
                 <div class="col-12">
-                    <ul class="pagination">
-                        <li class="page-item">
-                            <a class="page-link" href="#" aria-label="Previous">
-                                <span class="fas fa-arrow-circle-right"></span>
-                                <span class="sr-only">Previous</span>
-                            </a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link" href="#">1</a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link" href="#">2</a>
-                        </li>
-                        <li class="page-item active">
-                            <a class="page-link" href="#">3</a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link" href="#">...</a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link" href="#">18</a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link" href="#" aria-label="Next">
-                                <span class="fas fa-arrow-circle-right"></span>
-                                <span class="sr-only">Next</span>
-                            </a>
-                        </li>
-                    </ul>
+                    {{ $savedJobs->links('vendor.pagination.default') }}
                 </div>
             </div>
         </div>

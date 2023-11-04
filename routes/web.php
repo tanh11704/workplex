@@ -40,10 +40,23 @@ Route::get('/dashboard/myprofile', [\App\Http\Controllers\Admin\UserController::
 Route::put('/dashboard/update-profile', [\App\Http\Controllers\Admin\UserController::class, 'update'])->name('user.update');
 Route::put('/dashboard/update-profile/contact', [\App\Http\Controllers\Admin\UserController::class, 'updateContact'])->name('user.updateContact');
 Route::put('/dashboard/update-profile/social', [\App\Http\Controllers\Admin\UserController::class, 'updateSocial'])->name('user.updateSocial');
+Route::put('/dashboard/update-profile/cv', [\App\Http\Controllers\Admin\UserController::class, 'updateCv'])->name('user.updateCv');
+//Post Job
+Route::get('/dashboard/post-job', [\App\Http\Controllers\JobsController::class, 'postUi'])->name('post-job');
+Route::post('/dashboard/post-job', [\App\Http\Controllers\JobsController::class, 'store'])->name('jobs.store');
 //Bookmark Jobs
 Route::get('/dashboard/bookmark-jobs', [\App\Http\Controllers\Admin\SavedJobsController::class, 'index'])->name('user.bookmark-jobs');
-
+Route::delete('/dashboard/bookmark-jobs/{id}', [\App\Http\Controllers\Admin\SavedJobsController::class, 'delete'])->name('savedJob.delete');
+//Applied Jobs
+Route::get('/dashboard/applied-jobs', [\App\Http\Controllers\Admin\AppliedJobsController::class, 'index'])->name('user.appliedJob');
+Route::delete('/dashboard/applied-jobs/{id}', [\App\Http\Controllers\Admin\AppliedJobsController::class, 'delete'])->name('user.appliedJob.delete');
+//Manage Jobs
+Route::get('/dashboard/manage-jobs', [\App\Http\Controllers\Admin\ManageJobsController::class, 'index'])->name('user.manage-jobs');
+Route::get('/dashboard/manage-jobs/{id}/edit', [\App\Http\Controllers\Admin\ManageJobsController::class, 'editUi'])->name('user.edit-jobs');
+Route::put('/dashboard/manage-jobs/edit', [\App\Http\Controllers\Admin\ManageJobsController::class, 'editJob'])->name('user.edit-jobs.edit');
+Route::delete('/dashboard/manage-jobs/{id}', [\App\Http\Controllers\Admin\ManageJobsController::class, 'delete'])->name('user.manage-jobs.delete');
+//Manage Applicant
+Route::get('/dashboard/manage-applicant', [\App\Http\Controllers\Admin\ManageApplicantController::class, 'index'])->name('user.manage-applicant');
 //Change Password
 Route::get('/dashboard/change-password', [\App\Http\Controllers\Admin\DashboardController::class, 'changePassword'])->name('change-password');
 Route::put('/dashboard/change-password', [\App\Http\Controllers\Auth\ChangePasswordController::class, 'changePassword'])->name('user.changePassword');
-

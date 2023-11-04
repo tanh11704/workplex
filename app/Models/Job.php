@@ -14,33 +14,29 @@ class Job extends Model
 
     protected $fillable = [
         'title',
-        'icon',
         'image',
+        'company',
         'description',
         'salary',
         'category_id',
         'type',
-        'career_level',
-        'specialisms',
         'experience',
-        'qualification',
         'deadline',
         'country',
         'city',
         'full_address',
         'user_id',
+        'applicant_limit',
+        'applicant_current',
     ];
 
     public $timestamps = true;
 
-    /**
-     * Phương thức này tạo một mối quan hệ "belongsTo" giữa một sản phẩm và danh mục tương ứng.
-     *
-     * Hàm này được sử dụng để thiết lập một quan hệ "belongsTo" trong mô hình Eloquent
-     * giữa một sản phẩm và danh mục của nó dựa trên khóa ngoại "category_id".
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
+    public function getJobPath()
+    {
+        return asset('storage/' . $this->image);
+    }
+
     public function category()
     {
         return $this->belongsTo(Category::class, 'category_id');
@@ -59,5 +55,13 @@ class Job extends Model
     public function jobType()
     {
         return $this->belongsTo(JobType::class, 'type');
+    }
+
+    public function requirements() {
+        return $this->hasMany(JobRequirement::class, 'job_id');
+    }
+
+    public function experience() {
+        return $this->belongsTo(Experience::class, 'experience_id');
     }
 }

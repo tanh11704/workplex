@@ -8,6 +8,7 @@ use App\Models\Experience;
 use App\Models\JobType;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -75,5 +76,23 @@ class UserController extends Controller
         $user->save();
 
         return redirect('/dashboard/myprofile')->with('updated', 'Success Update Contact Information');
+    }
+
+    public function updateCv(Request $request) {
+        if ($request->hasFile('cv')) {
+            $user = Auth::user();
+            $cvPath = $user->cv;
+            if ($cvPath && Storage::exists('public/' . $cvPath)) {
+                Storage::delete('public/' . $cvPath);
+            }
+
+            $cv = $request->file('cv');
+            $cvPath = $cv->store('cvs', 'public');
+            $user->cv = $cvPath;
+            $user->save();
+            return redirect('/dashboard/myprofile')->with('success', 'Success Update CV');
+        } else {
+            return redirect('/dashboard/myprofile')->with('error', 'Please Upload CV');
+        }
     }
 }

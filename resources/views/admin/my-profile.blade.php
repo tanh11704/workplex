@@ -9,7 +9,17 @@
                 </div>
             </div>
         </div>
-
+        @if(session('error'))
+            <div class="alert alert-danger">
+                <strong>Error!</strong>
+                {{ session('error') }}
+            </div>
+        @elseif(session('success'))
+            <div class="alert alert-success">
+                <strong>Success!</strong>
+                {{ session('success') }}
+            </div>
+        @endif
         <div class="dashboard-widg-bar d-block">
             <div class="row">
                 <div class="col-12">
@@ -20,7 +30,8 @@
                             </h4>
                         </div>
                         <div class="py-3 px-3">
-                            <form action="{{ route('user.update') }}" method="post" enctype="multipart/form-data" class="row">
+                            <form action="{{ route('user.update') }}" method="post" enctype="multipart/form-data"
+                                  class="row">
                                 @csrf
                                 @method('put')
                                 <div class="col-12 col-md-3">
@@ -32,7 +43,8 @@
                                             id="customFile"
                                             onchange="updateLabel(this)"
                                         />
-                                        <label class="custom-file-label" for="customFile" style="background-image: url('{{ $user->getAvatarPath() }}')">
+                                        <label class="custom-file-label" for="customFile"
+                                               style="background-image: url('{{ $user->getAvatarPath() }}')">
                                             @if($user->avatar === '')
                                                 <i class="fa fa-user"></i>
                                             @endif
@@ -90,7 +102,8 @@
                                                 <select name="job_type" class="form-select rounded">
                                                     <option value="">Choose Job Type</option>
                                                     @foreach ($jobTypes as $id => $name)
-                                                        <option value="{{ $id }}" {{ $id == $user->job_type ? 'selected' : '' }}>
+                                                        <option
+                                                            value="{{ $id }}" {{ $id == $user->job_type ? 'selected' : '' }}>
                                                             {{ $name }}
                                                         </option>
                                                     @endforeach
@@ -103,7 +116,8 @@
                                                 <select name="job_category" class="form-select rounded">
                                                     <option value="">Choose Categories</option>
                                                     @foreach ($jobCategories as $id => $title)
-                                                        <option value="{{ $id }}" {{ $id == $user->job_category ? 'selected' : '' }}>
+                                                        <option
+                                                            value="{{ $id }}" {{ $id == $user->job_category ? 'selected' : '' }}>
                                                             {{ $title }}
                                                         </option>
                                                     @endforeach
@@ -116,7 +130,8 @@
                                                 <select name="experience" class="form-select rounded">
                                                     <option value="">Select Experience</option>
                                                     @foreach($experiences as $id => $title)
-                                                        <option value="{{ $id }}" {{ $id == $user->experience ? 'selected' : '' }}>
+                                                        <option
+                                                            value="{{ $id }}" {{ $id == $user->experience ? 'selected' : '' }}>
                                                             {{ $title }}
                                                         </option>
                                                     @endforeach
@@ -181,7 +196,8 @@
                                         <div class="col-lg-12">
                                             <div class="form-group">
                                                 <label class="text-dark">About Info</label>
-                                                <textarea name="about" class="form-control with-light">{{ $user->about }}</textarea>
+                                                <textarea name="about"
+                                                          class="form-control with-light">{{ $user->about }}</textarea>
                                             </div>
                                         </div>
                                         <div class="col-lg-12">
@@ -321,6 +337,39 @@
                                             placeholder="Hoà Hải, Ngũ Hành Sơn, Đà Nẵng"
                                             value="{{ $user->full_address }}"
                                         />
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="form-group">
+                                        <button
+                                            type="submit"
+                                            class="btn py-3 px-4 text-white rounded theme-bg"
+                                        >
+                                            Save Changes
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="bg-white rounded mb-4">
+                        <div class="br-bottom py-3 px-3">
+                            <h4 class="mb-0 fs-6">
+                                <i class="lni lni-add-files me-1 theme-cl"></i>
+                                Contact Information
+                            </h4>
+                        </div>
+                        <div class="py-3 px-3">
+                            <form action="{{ route('user.updateCv') }}" method="post" class="row" enctype="multipart/form-data">
+                                @csrf
+                                @method('put')
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="text-dark">Resume</label>
+                                        <input type="file" id="cv" name="cv" class="d-none"/>
+                                        <input type="text" id="cv_filename" class="form-control rounded" readonly onclick="document.getElementById('cv').click()" value="{{ str_replace("cvs/", "", \Illuminate\Support\Facades\Auth::user()->cv) }}">
                                     </div>
                                 </div>
                                 <div class="col-lg-12">

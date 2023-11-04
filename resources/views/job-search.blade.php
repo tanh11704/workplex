@@ -73,7 +73,7 @@
                                     class="d-block text-center m-auto"
                                 >
                                     <img
-                                        src="{{ asset('assets/img/' . $job->image) }}"
+                                        src="{{ $job->getJobPath() }}"
                                         class="img-fluid"
                                         width="70"
                                         alt=""

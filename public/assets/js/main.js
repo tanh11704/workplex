@@ -23,7 +23,7 @@ $(window).on("scroll", function () {
 $(window).on("scroll", function () {
     var scroll = $(window).scrollTop();
 
-    if (scroll >= 50) {
+    if (scroll > 50) {
         $(".header").addClass("header-fixed");
     } else {
         $(".header").removeClass("header-fixed");
@@ -65,7 +65,7 @@ function updateLabel(input) {
     if (input.files && input.files[0]) {
         const reader = new FileReader();
 
-        reader.onload = function(e) {
+        reader.onload = function (e) {
             label.style.backgroundImage = `url(${e.target.result})`;
         };
 
@@ -80,3 +80,24 @@ function updateLabel(input) {
         label.querySelector('i.fa-user').style.display = 'block';
     }
 }
+
+function addRequirement() {
+    const requirementsContainer = document.getElementById('requirements-container');
+    const newRequirement = document.createElement('div');
+    newRequirement.classList.add('requirement', 'd-flex', 'mb-3');
+    newRequirement.innerHTML = `
+        <input type="text" name="requirements[]" class="form-control rounded me-2">
+        <button class="btn btn-danger py-2 px-3 text-white rounded" onclick="removeRequirement(this)">Xóa</button>
+    `;
+    requirementsContainer.appendChild(newRequirement);
+}
+
+function removeRequirement(button) {
+    const requirementsContainer = document.getElementById('requirements-container');
+    requirementsContainer.removeChild(button.parentElement);
+}
+
+document.getElementById('cv').addEventListener('change', function() {
+    document.getElementById('cv_filename').value = this.files[0].name;
+});
+

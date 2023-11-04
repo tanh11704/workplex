@@ -162,6 +162,22 @@ select.form-control:focus {
   font-weight: 500;
 }
 
+.file-upload:after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    content: "Upload";
+    font-size: 14px;
+    color: #fff;
+    background: rgba(40, 182, 97, 0.1);
+    border-radius: 4px;
+    cursor: pointer;
+    z-index: 2;
+}
+
 .custom-file {
   position: relative;
   display: inline-block;

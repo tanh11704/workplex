@@ -5,16 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class SavedJob extends Model
+class JobRequirement extends Model
 {
     use HasFactory;
 
-    protected $table = 'saved_job';
+    protected $table = 'job_requirements';
     protected $primaryKey = 'id';
-
     protected $fillable = [
         'job_id',
-        'user_id',
+        'content',
     ];
 
     public $timestamps = true;

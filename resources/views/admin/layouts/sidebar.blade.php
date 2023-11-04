@@ -23,25 +23,25 @@
                             <i class="lni lni-bookmark me-2"></i>Bookmark Jobs
                         </a>
                     </li>
-                    <li>
-                        <a href="dashboard-applied-jobs.html"
-                        ><i class="lni lni-briefcase me-2"></i>Applied jobs</a
-                        >
+                    <li class="{{ \Illuminate\Support\Facades\Route::currentRouteName() === 'user.appliedJob' ? 'active' : '' }}">
+                        <a href="{{ route('user.appliedJob') }}">
+                            <i class="lni lni-briefcase me-2"></i>Applied jobs
+                        </a>
                     </li>
                 </ul>
                 <ul data-submenu-title="Employer">
-                    <li>
-                        <a href="dashboard-applied-jobs.html"
+                    <li class="{{ \Illuminate\Support\Facades\Route::currentRouteName() === 'post-job' ? 'active' : '' }}">
+                        <a href="{{ route('post-job') }}"
                         ><i class="lni lni-circle-plus me-2"></i>Post New Job</a
                         >
                     </li>
-                    <li>
-                        <a href="dashboard-manage-jobs.html">
+                    <li class="{{ \Illuminate\Support\Facades\Route::currentRouteName() === 'user.manage-jobs' ? 'active' : '' }}">
+                        <a href="{{ route('user.manage-jobs') }}">
                             <i class="lni lni-add-files me-2"></i>Manage Jobs
                         </a>
                     </li>
-                    <li>
-                        <a href="dashboard-manage-jobs.html">
+                    <li class="{{ \Illuminate\Support\Facades\Route::currentRouteName() === 'user.manage-applicant' ? 'active' : '' }}">
+                        <a href="{{ route("user.manage-applicant") }}">
                             <i class="lni lni-briefcase-alt me-2"></i>Manage Applicant
                         </a>
                     </li>

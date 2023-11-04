@@ -21,21 +21,6 @@
                             Find Job <i class="ti-angle-double-down fs-"></i>
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            Candidates <i class="ti-angle-double-down fs-"></i>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            Employers <i class="ti-angle-double-down fs-"></i>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            Pages <i class="ti-angle-double-down fs-"></i>
-                        </a>
-                    </li>
                 </ul>
                 <ul class="navbar-nav nav-right me-0 mb-lg-0 float-end">
                     @guest

@@ -152,7 +152,7 @@
                                 <div class="rounded bg-white d-flex align-items-center justify-content-between px-3 py-3">
                                     <div class="rounded bg-white d-flex align-items-center">
                                         <div class="text-center">
-                                            <img src="{{ asset('assets/img/' . $job->image) }}" class="img-fluid" width="55"
+                                            <img src="{{ $job->getJobPath() }}" class="img-fluid" width="55"
                                                  alt="" />
                                         </div>
                                         <div class="px-2">

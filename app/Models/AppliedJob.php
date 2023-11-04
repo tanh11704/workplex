@@ -19,4 +19,8 @@ class AppliedJob extends Model
     ];
 
     public $timestamps = true;
+
+    public function job() {
+        return $this->belongsTo(Job::class, 'job_id');
+    }
 }
