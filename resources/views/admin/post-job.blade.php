@@ -77,16 +77,6 @@
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label class="text-dark">Specialisms</label>
-                                                <input
-                                                    name="specialisms"
-                                                    class="form-control rounded"
-                                                    placeholder="Specialisms"
-                                                >
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
                                                 <label class="text-dark">Experience</label>
                                                 <select class="form-control rounded" name="experience">
                                                     @foreach($experiences as $id => $title)

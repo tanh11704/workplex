@@ -62,6 +62,11 @@ class ManageJobsController extends Controller
 
         //image
         if ($request->hasFile('job_image')) {
+            $imagePath = $job->image;
+            if ($imagePath && Storage::exists('public/' . $imagePath)) {
+                Storage::delete('public/' . $imagePath);
+            }
+
             $originalFileName = $request->file('job_image')->getClientOriginalName();
             $fileName = pathinfo($originalFileName, PATHINFO_FILENAME);
             $fileExtension = $request->file('job_image')->getClientOriginalExtension();

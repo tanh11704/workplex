@@ -9,11 +9,11 @@ class JobRequirement extends Model
 {
     use HasFactory;
 
-    protected $table = 'job_requirements';
+    protected $table = 'job_requirement';
     protected $primaryKey = 'id';
     protected $fillable = [
         'job_id',
-        'content',
+        'requirement',
     ];
 
     public $timestamps = true;

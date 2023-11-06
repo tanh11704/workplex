@@ -15,7 +15,7 @@
                 <div class="col-12">
                     <p class="m-0 p-0 ft-sm">
                         You have saved
-                        <span class="text-dark fw-bold">26</span> jobs
+                        <span class="text-dark fw-bold">{{ $savedJobs->count() }}</span> jobs
                     </p>
                 </div>
                     @if(session('delete'))

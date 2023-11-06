@@ -10,10 +10,11 @@ class Category extends Model
     use HasFactory;
 
     protected $table = 'category';
+
     protected $primaryKey = 'id';
 
     protected $fillable = [
-        'title',
+        'name',
         'icon'
     ];
 
@@ -21,11 +22,16 @@ class Category extends Model
 
     public function jobs()
     {
-        return $this->hasMany(Job::class);
+        return $this->hasMany(Job::class, 'category_id');
+    }
+
+    public function users()
+    {
+        return $this->hasMany(User::class, 'category_id');
     }
 
     public static function getCategories()
     {
-        return static::pluck('title', 'id')->all();
+        return static::pluck('name', 'id')->all();
     }
 }

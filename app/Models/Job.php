@@ -19,15 +19,15 @@ class Job extends Model
         'description',
         'salary',
         'category_id',
-        'type',
-        'experience',
+        'type_id',
+        'experience_id',
         'deadline',
         'country',
         'city',
         'full_address',
-        'user_id',
         'applicant_limit',
         'applicant_current',
+        'status',
     ];
 
     public $timestamps = true;
@@ -54,7 +54,7 @@ class Job extends Model
 
     public function jobType()
     {
-        return $this->belongsTo(JobType::class, 'type');
+        return $this->belongsTo(JobType::class, 'type_id');
     }
 
     public function requirements() {
@@ -63,5 +63,13 @@ class Job extends Model
 
     public function experience() {
         return $this->belongsTo(Experience::class, 'experience_id');
+    }
+
+    public function user() {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function savedJobs() {
+        return $this->hasMany(SavedJob::class, 'job_id');
     }
 }

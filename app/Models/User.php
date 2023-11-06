@@ -12,6 +12,8 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    protected $table = 'users';
+
     /**
      * The attributes that are mass assignable.
      *
@@ -21,6 +23,27 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'avatar',
+        'job_title',
+        'phone',
+        'type_id',
+        'category_id',
+        'experience_id',
+        'education',
+        'current_salary',
+        'expected_salary',
+        'age',
+        'language',
+        'about',
+        'role_id',
+        'cv',
+        'facebook',
+        'linkedin',
+        'instagram',
+        'twitter',
+        'country',
+        'city',
+        'full_address',
     ];
 
     /**
@@ -45,11 +68,31 @@ class User extends Authenticatable
 
     public function savedJobs()
     {
-        return $this->hasMany(SavedJob::class);
+        return $this->hasMany(SavedJob::class, 'user_id');
     }
 
     public function appliedJobs() {
-        return $this->hasMany(AppliedJob::class);
+        return $this->hasMany(AppliedJob::class, 'user_id');
+    }
+
+    public function jobs() {
+        return $this->hasMany(Job::class);
+    }
+
+    public function jobType() {
+        return $this->belongsTo(JobType::class, 'type_id');
+    }
+
+    public function jobCategory() {
+        return $this->belongsTo(Category::class, 'category_id');
+    }
+
+    public function experience() {
+        return $this->belongsTo(Experience::class, 'experience_id');
+    }
+
+    public function role() {
+        return $this->belongsTo(Role::class, 'role_id');
     }
 
     // Model

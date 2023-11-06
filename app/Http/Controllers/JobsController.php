@@ -107,8 +107,8 @@ class JobsController extends Controller
         $job->description = $request->description;
         $job->category_id = $request->category;
         $job->salary = $request->salary;
-        $job->type = $request->type;
-        $job->experience = $request->experience;
+        $job->type_id = $request->type;
+        $job->experience_id = $request->experience;
         $job->deadline = $request->input('dealine');
         $job->country = $request->country;
         $job->city = $request->city;
@@ -124,7 +124,7 @@ class JobsController extends Controller
         foreach ($requirements as $requirement) {
             $jobRequirement = new JobRequirement();
             $jobRequirement->job_id = $job->id;
-            $jobRequirement->content = $requirement;
+            $jobRequirement->requirement = $requirement;
             $jobRequirement->save();
         }
 

@@ -103,7 +103,7 @@
                                                     <option value="">Choose Job Type</option>
                                                     @foreach ($jobTypes as $id => $name)
                                                         <option
-                                                            value="{{ $id }}" {{ $id == $user->job_type ? 'selected' : '' }}>
+                                                            value="{{ $id }}" {{ $id == $user->jobType->id ? 'selected' : '' }}>
                                                             {{ $name }}
                                                         </option>
                                                     @endforeach
@@ -117,7 +117,7 @@
                                                     <option value="">Choose Categories</option>
                                                     @foreach ($jobCategories as $id => $title)
                                                         <option
-                                                            value="{{ $id }}" {{ $id == $user->job_category ? 'selected' : '' }}>
+                                                            value="{{ $id }}" {{ $id == $user->jobCategory->id ? 'selected' : '' }}>
                                                             {{ $title }}
                                                         </option>
                                                     @endforeach
@@ -131,7 +131,7 @@
                                                     <option value="">Select Experience</option>
                                                     @foreach($experiences as $id => $title)
                                                         <option
-                                                            value="{{ $id }}" {{ $id == $user->experience ? 'selected' : '' }}>
+                                                            value="{{ $id }}" {{ $id == $user->experience->id ? 'selected' : '' }}>
                                                             {{ $title }}
                                                         </option>
                                                     @endforeach

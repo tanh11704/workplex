@@ -27,4 +27,9 @@ class Experience extends Model
     {
         return $this->hasMany(Job::class, 'experience_id');
     }
+
+    public function users()
+    {
+        return $this->hasMany(User::class, 'experience_id');
+    }
 }

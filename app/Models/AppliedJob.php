@@ -9,7 +9,7 @@ class AppliedJob extends Model
 {
     use HasFactory;
 
-    protected $table = 'applied_jobs';
+    protected $table = 'applied_job';
     protected $primaryKey = 'id';
 
     protected $fillable = [
@@ -22,5 +22,9 @@ class AppliedJob extends Model
 
     public function job() {
         return $this->belongsTo(Job::class, 'job_id');
+    }
+
+    public function user() {
+        return $this->belongsTo(User::class, 'user_id');
     }
 }

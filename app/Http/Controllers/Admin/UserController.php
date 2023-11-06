@@ -30,24 +30,32 @@ class UserController extends Controller
         $user = Auth::user();
 
         if ($request->hasFile('avatar')) {
-            $avatar = $request->file('avatar');
-            $imagePath = $avatar->store('avatars', 'public');
+            $imagePath = $user->avatar;
+            if ($imagePath && Storage::exists('public/' . $imagePath)) {
+                Storage::delete('public/' . $imagePath);
+            }
+
+            $originalFileName = $request->file('avatar')->getClientOriginalName();
+            $fileName = pathinfo($originalFileName, PATHINFO_FILENAME);
+            $fileExtension = $request->file('avatar')->getClientOriginalExtension();
+            $uniqueFileName = $fileName . '_' . time() . '.' . $fileExtension;
+            $imagePath = $request->file('avatar')->storeAs('avatars', $uniqueFileName, 'public');
             $user->avatar = $imagePath;
+
         }
 
         $user->name = $request->input('name');
         $user->job_title = $request->input('job_title');
         $user->phone = $request->input('phone');
-        $user->job_type = $request->input('job_type');
-        $user->job_category = $request->input('job_category');
-        $user->experience = $request->input('experience');
+        $user->type_id = $request->input('job_type');
+        $user->category_id = $request->input('job_category');
+        $user->experience_id = $request->input('experience');
         $user->education = $request->input('education');
         $user->current_salary = $request->input('current_salary');
         $user->expected_salary = $request->input('expected_salary');
         $user->age = $request->input('age');
         $user->language = $request->input('language');
         $user->about = $request->input('about');
-
         $user->save();
 
         return redirect('/dashboard/myprofile')->with('updated', 'Success Update Information');
