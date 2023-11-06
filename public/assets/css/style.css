@@ -83,6 +83,26 @@ a {
   text-decoration: none;
 }
 
+.agree-hover {
+    background: rgba(23, 182, 124, 0.1);
+    color: #17b67c;
+}
+
+.agree-hover:hover {
+    color: #fff;
+    background-color: #03b97c;
+}
+
+.close-hover {
+    background: rgba(255, 0, 0, 0.1);
+    color: red;
+}
+
+.close-hover:hover {
+    color: #FFFFFF;
+    background-color: red;
+}
+
 /* Table */
 .table thead th {
   vertical-align: bottom;

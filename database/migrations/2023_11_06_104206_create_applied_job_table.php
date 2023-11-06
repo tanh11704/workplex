@@ -16,6 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('job_id');
             $table->unsignedBigInteger('user_id');
             $table->string('cv');
+            $table->string('status');
             $table->timestamps();
 
             // Foreign keys

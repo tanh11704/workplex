@@ -28,7 +28,7 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id');
             $table->integer('applicant_limit');
             $table->integer('applicant_current')->default(0);
-            $table->string('status');
+            $table->string('status')->default('Pending');
             $table->timestamps();
 
             // Foreign keys

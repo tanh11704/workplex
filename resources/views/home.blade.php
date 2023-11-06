@@ -151,7 +151,7 @@
                             <div class="position-relative d-block bg-white text-start border rounded">
                                 <div class="rounded bg-white d-flex align-items-center justify-content-between px-3 py-3">
                                     <div class="rounded bg-white d-flex align-items-center">
-                                        <div class="text-center">
+                                        <div class="text-center" style="width: 55px; height: 55px">
                                             <img src="{{ $job->getJobPath() }}" class="img-fluid" width="55"
                                                  alt="" />
                                         </div>
@@ -231,8 +231,8 @@
                                     {!! $category->icon !!}
                                 </div>
                                 <div class="categories-caption">
-                                    <h4 class="fs-6">{{ $category->title }}</h4>
-                                    <span>{{ $category->jobs_count }}</span>
+                                    <h4 class="fs-6">{{ $category->name }}</h4>
+                                    <span>{{ $category->jobs_count }} Jobs</span>
                                 </div>
                             </a>
                         </div>
