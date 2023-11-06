@@ -26,10 +26,6 @@
                                         {{ $job->city }}, {{ $job->country }}
                                     </span>
                                     <span class="ms-3">
-                                        <i class="lni lni-briefcase"></i>
-                                        InVision
-                                    </span>
-                                    <span class="ms-3">
                                         <i class="lni lni-money-protection"></i>
                                         {{ $job->salary }}
                                     </span>
@@ -93,7 +89,7 @@
                                                         class="theme-cl p-1 small d-flex align-items-center justify-content-center">
                                                         <i class="fas fa-check small"></i>
                                                     </div>
-                                                    <span class="mb-0 ms-3"> {{ $requirement->content }} </span>
+                                                    <span class="mb-0 ms-3"> {{ $requirement->requirement }} </span>
                                                 </div>
                                             </div>
                                         @endforeach

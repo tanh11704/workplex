@@ -71,6 +71,7 @@
                                 <a
                                     href="{{ url('single-job/' . $job->id) }}"
                                     class="d-block text-center m-auto"
+                                    style="height: 70px"
                                 >
                                     <img
                                         src="{{ $job->getJobPath() }}"

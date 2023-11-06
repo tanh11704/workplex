@@ -59,7 +59,7 @@
                     @endguest
 
                     <li class="addlisting nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="{{ route('post-job') }}">
                             <i class="lni lni-circle-plus me-1"></i>
                             Post a Job
                         </a>

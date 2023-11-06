@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Experience;
 use App\Models\JobType;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -14,7 +15,7 @@ class UserController extends Controller
 {
     //
     public function myProfile() {
-        $user = Auth::user();
+        $user = User::find(Auth::id());
         $jobTypes = JobType::getJobTypes();
         $jobCategories = Category::getCategories();
         $experiences = Experience::getExperiences();

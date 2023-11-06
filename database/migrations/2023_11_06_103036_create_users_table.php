@@ -29,7 +29,7 @@ return new class extends Migration
             $table->string('expected_salary')->nullable();
             $table->integer('age')->nullable();
             $table->string('language')->nullable();
-            $table->string('about')->nullable();
+            $table->text('about')->nullable();
             $table->unsignedBigInteger('role_id')->default(1);
             $table->string('cv')->nullable();
             $table->string('facebook')->nullable();
@@ -41,10 +41,10 @@ return new class extends Migration
             $table->string('full_address')->nullable();
 
             // Foreign keys
-            $table->foreign('category_id')->references('id')->on('category');
-            $table->foreign('experience_id')->references('id')->on('experience');
-            $table->foreign('type_id')->references('id')->on('job_type');
-            $table->foreign('role_id')->references('id')->on('role');
+            $table->foreign('category_id')->references('id')->on('category')->nullOnDelete()->cascadeOnUpdate();
+            $table->foreign('experience_id')->references('id')->on('experience')->nullOnDelete()->cascadeOnUpdate();
+            $table->foreign('type_id')->references('id')->on('job_type')->nullOnDelete()->cascadeOnUpdate();
+            $table->foreign('role_id')->references('id')->on('role')->cascadeOnDelete()->cascadeOnUpdate();
 
             $table->timestamps();
         });

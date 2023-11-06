@@ -100,28 +100,32 @@
                                             <div class="form-group">
                                                 <label class="text-dark">Job Type</label>
                                                 <select name="job_type" class="form-select rounded">
-                                                    <option value="">Choose Job Type</option>
-                                                    @foreach ($jobTypes as $id => $name)
-                                                        <option
-                                                            value="{{ $id }}" {{ $id == $user->jobType->id ? 'selected' : '' }}>
-                                                            {{ $name }}
-                                                        </option>
+                                                    <option value="">Select Job Type</option>
+                                                    @foreach ($jobTypes as $id => $type)
+                                                        @if (!is_null($user->jobType) && $id == $user->jobType->id)
+                                                            <option value="{{ $id }}" selected>{{ $type }}</option>
+                                                        @else
+                                                            <option value="{{ $id }}">{{ $type }}</option>
+                                                        @endif
                                                     @endforeach
                                                 </select>
+
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
                                             <div class="form-group">
                                                 <label class="text-dark">Job Category</label>
                                                 <select name="job_category" class="form-select rounded">
-                                                    <option value="">Choose Categories</option>
+                                                    <option value="">Select Job Category</option>
                                                     @foreach ($jobCategories as $id => $title)
-                                                        <option
-                                                            value="{{ $id }}" {{ $id == $user->jobCategory->id ? 'selected' : '' }}>
-                                                            {{ $title }}
-                                                        </option>
+                                                        @if (!is_null($user->jobCategory) && $id == $user->jobCategory->id)
+                                                            <option value="{{ $id }}" selected>{{ $title }}</option>
+                                                        @else
+                                                            <option value="{{ $id }}">{{ $title }}</option>
+                                                        @endif
                                                     @endforeach
                                                 </select>
+
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
@@ -129,13 +133,15 @@
                                                 <label class="text-dark">Experience</label>
                                                 <select name="experience" class="form-select rounded">
                                                     <option value="">Select Experience</option>
-                                                    @foreach($experiences as $id => $title)
-                                                        <option
-                                                            value="{{ $id }}" {{ $id == $user->experience->id ? 'selected' : '' }}>
-                                                            {{ $title }}
-                                                        </option>
+                                                    @foreach ($experiences as $id => $title)
+                                                        @if (!is_null($user->experience) && $id == $user->experience->id)
+                                                            <option value="{{ $id }}" selected>{{ $title }}</option>
+                                                        @else
+                                                            <option value="{{ $id }}">{{ $title }}</option>
+                                                        @endif
                                                     @endforeach
                                                 </select>
+
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
@@ -362,14 +368,17 @@
                             </h4>
                         </div>
                         <div class="py-3 px-3">
-                            <form action="{{ route('user.updateCv') }}" method="post" class="row" enctype="multipart/form-data">
+                            <form action="{{ route('user.updateCv') }}" method="post" class="row"
+                                  enctype="multipart/form-data">
                                 @csrf
                                 @method('put')
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label class="text-dark">Resume</label>
                                         <input type="file" id="cv" name="cv" class="d-none"/>
-                                        <input type="text" id="cv_filename" class="form-control rounded" readonly onclick="document.getElementById('cv').click()" value="{{ str_replace("cvs/", "", \Illuminate\Support\Facades\Auth::user()->cv) }}">
+                                        <input type="text" id="cv_filename" class="form-control rounded" readonly
+                                               onclick="document.getElementById('cv').click()"
+                                               value="{{ str_replace("cvs/", "", \Illuminate\Support\Facades\Auth::user()->cv) }}">
                                     </div>
                                 </div>
                                 <div class="col-lg-12">

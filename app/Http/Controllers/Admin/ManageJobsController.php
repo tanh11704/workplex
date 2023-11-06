@@ -56,7 +56,7 @@ class ManageJobsController extends Controller
         foreach ($requirements as $requirement) {
             $jobRequirement = new JobRequirement();
             $jobRequirement->job_id = $job->id;
-            $jobRequirement->content = $requirement;
+            $jobRequirement->requirement = $requirement;
             $jobRequirement->save();
         }
 

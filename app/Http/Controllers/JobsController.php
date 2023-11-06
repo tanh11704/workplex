@@ -19,9 +19,12 @@ class JobsController extends Controller
     public function search(Request $request)
     {
 
-        $name = $request->input('name');
-        $category = $request->input('category');
+        $name = $request->name;
+        $category = $request->category;
 
+        $name == null ? '' : $name;
+
+        $name = $name ?? '';
 
         if ($category != 0) {
             $jobs = Job::where('title', 'like', '%' . $name . '%')->where('category_id', $category)->where("status", "Active")->paginate(16);

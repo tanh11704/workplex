@@ -18,8 +18,8 @@ return new class extends Migration
             $table->timestamps();
 
             // Foreign keys
-            $table->foreign('job_id')->references('id')->on('job');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('job_id')->references('id')->on('job')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreign('user_id')->references('id')->on('users')->cascadeOnDelete()->cascadeOnUpdate();
         });
     }
 

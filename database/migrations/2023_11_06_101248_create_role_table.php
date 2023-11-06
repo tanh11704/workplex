@@ -16,11 +16,6 @@ return new class extends Migration
             $table->string('role');
             $table->timestamps();
         });
-
-        \Illuminate\Support\Facades\DB::table('role')->insert([
-            ['role' => 'USER'],
-            ['role' => 'ADMIN'],
-        ]);
     }
 
     /**

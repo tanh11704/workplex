@@ -32,10 +32,10 @@ return new class extends Migration
             $table->timestamps();
 
             // Foreign keys
-            $table->foreign('category_id')->references('id')->on('category');
-            $table->foreign('experience_id')->references('id')->on('experience');
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('type_id')->references('id')->on('job_type');
+            $table->foreign('category_id')->references('id')->on('category')->noActionOnDelete()->cascadeOnUpdate();
+            $table->foreign('experience_id')->references('id')->on('experience')->noActionOnDelete()->cascadeOnUpdate();
+            $table->foreign('user_id')->references('id')->on('users')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreign('type_id')->references('id')->on('job_type')->noActionOnDelete()->cascadeOnUpdate();
         });
     }
 

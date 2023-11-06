@@ -134,7 +134,7 @@
                                                     <div class="mb-3" id="requirements-container">
                                                         @foreach($job->requirements as $requirement)
                                                             <div class="input-group mb-3">
-                                                                <input type="text" class="form-control" name="requirements[]" value="{{ $requirement->content }}">
+                                                                <input type="text" class="form-control" name="requirements[]" value="{{ $requirement->requirement }}">
                                                                 <button type="button" class="btn btn-danger" onclick="removeRequirement(this)">X</button>
                                                             </div>
                                                         @endforeach
