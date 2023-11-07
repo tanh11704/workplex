@@ -57,6 +57,9 @@ Route::put('/dashboard/manage-jobs/edit', [\App\Http\Controllers\Admin\ManageJob
 Route::delete('/dashboard/manage-jobs/{id}', [\App\Http\Controllers\Admin\ManageJobsController::class, 'delete'])->name('user.manage-jobs.delete');
 //Manage Applicant
 Route::get('/dashboard/manage-applicant', [\App\Http\Controllers\Admin\ManageApplicantController::class, 'index'])->name('user.manage-applicant');
+Route::get('/dashboard/manage-applicant/download-cv/{cv_name}', [\App\Http\Controllers\Admin\ManageApplicantController::class, 'downloadCv'])->name('user.manage-applicant.cv');
+Route::post('/dashboard/manage-applicant/accept', [\App\Http\Controllers\Admin\ManageApplicantController::class, 'accept'])->name('user.manage-applicant.accept');
+Route::post('/dashboard/manage-applicant/reject', [\App\Http\Controllers\Admin\ManageApplicantController::class, 'reject'])->name('user.manage-applicant.reject');
 //Change Password
 Route::get('/dashboard/change-password', [\App\Http\Controllers\Admin\DashboardController::class, 'changePassword'])->name('change-password');
 Route::put('/dashboard/change-password', [\App\Http\Controllers\Auth\ChangePasswordController::class, 'changePassword'])->name('user.changePassword');

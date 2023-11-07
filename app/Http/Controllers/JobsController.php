@@ -74,11 +74,11 @@ class JobsController extends Controller
         $applyJob->user_id = $request->user_id;
         $applyJob->cv = $request->cv;
 
-        $job = Job::find($request->job_id);
-        $job->applicant_current += 1;
-        $job->save();
-
-        $applyJob->save();
+        if ($applyJob->save()) {
+            $job = Job::find($request->job_id);
+            $job->applicant_current += 1;
+            $job->save();
+        }
 
         return redirect('/single-job/' . $request->job_id . '')->with('apply', 'Apply Job Success');
     }

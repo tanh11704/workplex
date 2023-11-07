@@ -1,33 +1,52 @@
-// loader
-$(function loaderLoad() {
-    if ($(".loader").length) {
-        $(".loader").delay(200).fadeOut(300);
-    }
-    $(".loader_disabler").on("click", function () {
-        $("#loader").hide();
+// Sử dụng debounce để kiểm soát tần suất gọi hàm xử lý sự kiện scroll
+function debounce(func, delay) {
+    let timer;
+    return function () {
+        clearTimeout(timer);
+        timer = setTimeout(func, delay);
+    };
+}
+
+$(document).ready(function () {
+    var scrollTimeout;
+
+    // loader
+    $(function loaderLoad() {
+        if ($(".loader").length) {
+            $(".loader").delay(200).fadeOut(300);
+        }
+        $(".loader_disabler").on("click", function () {
+            $("#loader").hide();
+        });
     });
-});
 
-// Bottom To Top Scroll Script
-$(window).on("scroll", function () {
-    var height = $(window).scrollTop();
-    console.log(height);
-    if (height > 100) {
-        $("#backToTop").fadeIn();
-    } else {
-        $("#backToTop").fadeOut();
+    // Sử dụng debounce cho sự kiện scroll để tránh gọi quá nhanh
+    $(window).on("scroll", debounce(function () {
+        var scroll = $(window).scrollTop();
+
+        if (scroll >= 50) {
+            $(".header").addClass("header-fixed");
+        } else {
+            $(".header").removeClass("header-fixed");
+        }
+    }, 200)); // Thay đổi delay tùy theo nhu cầu
+
+    // Sử dụng debounce cho sự kiện scroll để tránh gọi quá nhanh
+    $(window).on("scroll", debounce(function () {
+        var height = $(window).scrollTop();
+
+        if (height >= 100) {
+            $("#backToTop").fadeIn();
+        } else {
+            $("#backToTop").fadeOut();
+        }
+    }, 200)); // Thay đổi delay tùy theo nhu cầu
+
+    // Kiểm tra nếu không có job_id trong URL
+    if (!window.location.href.includes('job_id')) {
+        $('#jobModal').modal('show'); // Mở modal
     }
-});
 
-// Script For Fix Header on Scroll
-$(window).on("scroll", function () {
-    var scroll = $(window).scrollTop();
-
-    if (scroll > 50) {
-        $(".header").addClass("header-fixed");
-    } else {
-        $(".header").removeClass("header-fixed");
-    }
 });
 
 // item slide
@@ -97,7 +116,7 @@ function removeRequirement(button) {
     requirementsContainer.removeChild(button.parentElement);
 }
 
-document.getElementById('cv').addEventListener('change', function() {
+document.getElementById('cv').addEventListener('change', function () {
     document.getElementById('cv_filename').value = this.files[0].name;
 });
 
