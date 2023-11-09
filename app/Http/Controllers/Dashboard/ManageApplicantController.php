@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 use App\Models\AppliedJob;
@@ -25,13 +25,13 @@ class ManageApplicantController extends Controller
                 ->where('applied_job.job_id', $jobId)
                 ->get();
 
-            return view('admin.manage-applicant')
+            return view('dashboard.manage-applicant')
                 ->with('applicants', $applicants)
                 ->with('jobId', $jobId);
         } else {
             $jobs = Job::where('user_id', Auth::user()->id)->get();
 
-            return view('admin.manage-applicant')
+            return view('dashboard.manage-applicant')
                 ->with('jobs', $jobs);
         }
     }

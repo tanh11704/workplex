@@ -34,32 +34,32 @@ Route::post('/single-job/saveJob', [\App\Http\Controllers\JobsController::class,
 Route::post('/single-job/apply', [\App\Http\Controllers\JobsController::class, 'applyJob'])->name('jobs.apply');
 
 //Dashboad
-Route::get('/dashboard', [\App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('dashboard');
+Route::get('/dashboard', [\App\Http\Controllers\Dashboard\DashboardController::class, 'index'])->name('dashboard');
 //My Profile
-Route::get('/dashboard/myprofile', [\App\Http\Controllers\Admin\UserController::class, 'myProfile'])->name('myProfile');
-Route::put('/dashboard/update-profile', [\App\Http\Controllers\Admin\UserController::class, 'update'])->name('user.update');
-Route::put('/dashboard/update-profile/contact', [\App\Http\Controllers\Admin\UserController::class, 'updateContact'])->name('user.updateContact');
-Route::put('/dashboard/update-profile/social', [\App\Http\Controllers\Admin\UserController::class, 'updateSocial'])->name('user.updateSocial');
-Route::put('/dashboard/update-profile/cv', [\App\Http\Controllers\Admin\UserController::class, 'updateCv'])->name('user.updateCv');
+Route::get('/dashboard/myprofile', [\App\Http\Controllers\Dashboard\UserController::class, 'myProfile'])->name('myProfile');
+Route::put('/dashboard/update-profile', [\App\Http\Controllers\Dashboard\UserController::class, 'update'])->name('user.update');
+Route::put('/dashboard/update-profile/contact', [\App\Http\Controllers\Dashboard\UserController::class, 'updateContact'])->name('user.updateContact');
+Route::put('/dashboard/update-profile/social', [\App\Http\Controllers\Dashboard\UserController::class, 'updateSocial'])->name('user.updateSocial');
+Route::put('/dashboard/update-profile/cv', [\App\Http\Controllers\Dashboard\UserController::class, 'updateCv'])->name('user.updateCv');
 //Post Job
 Route::get('/dashboard/post-job', [\App\Http\Controllers\JobsController::class, 'postUi'])->name('post-job');
 Route::post('/dashboard/post-job', [\App\Http\Controllers\JobsController::class, 'store'])->name('jobs.store');
 //Bookmark Jobs
-Route::get('/dashboard/bookmark-jobs', [\App\Http\Controllers\Admin\SavedJobsController::class, 'index'])->name('user.bookmark-jobs');
-Route::delete('/dashboard/bookmark-jobs/{id}', [\App\Http\Controllers\Admin\SavedJobsController::class, 'delete'])->name('savedJob.delete');
+Route::get('/dashboard/bookmark-jobs', [\App\Http\Controllers\Dashboard\SavedJobsController::class, 'index'])->name('user.bookmark-jobs');
+Route::delete('/dashboard/bookmark-jobs/{id}', [\App\Http\Controllers\Dashboard\SavedJobsController::class, 'delete'])->name('savedJob.delete');
 //Applied Jobs
-Route::get('/dashboard/applied-jobs', [\App\Http\Controllers\Admin\AppliedJobsController::class, 'index'])->name('user.appliedJob');
-Route::delete('/dashboard/applied-jobs/{id}', [\App\Http\Controllers\Admin\AppliedJobsController::class, 'delete'])->name('user.appliedJob.delete');
+Route::get('/dashboard/applied-jobs', [\App\Http\Controllers\Dashboard\AppliedJobsController::class, 'index'])->name('user.appliedJob');
+Route::delete('/dashboard/applied-jobs/{id}', [\App\Http\Controllers\Dashboard\AppliedJobsController::class, 'delete'])->name('user.appliedJob.delete');
 //Manage Jobs
-Route::get('/dashboard/manage-jobs', [\App\Http\Controllers\Admin\ManageJobsController::class, 'index'])->name('user.manage-jobs');
-Route::get('/dashboard/manage-jobs/{id}/edit', [\App\Http\Controllers\Admin\ManageJobsController::class, 'editUi'])->name('user.edit-jobs');
-Route::put('/dashboard/manage-jobs/edit', [\App\Http\Controllers\Admin\ManageJobsController::class, 'editJob'])->name('user.edit-jobs.edit');
-Route::delete('/dashboard/manage-jobs/{id}', [\App\Http\Controllers\Admin\ManageJobsController::class, 'delete'])->name('user.manage-jobs.delete');
+Route::get('/dashboard/manage-jobs', [\App\Http\Controllers\Dashboard\ManageJobsController::class, 'index'])->name('user.manage-jobs');
+Route::get('/dashboard/manage-jobs/{id}/edit', [\App\Http\Controllers\Dashboard\ManageJobsController::class, 'editUi'])->name('user.edit-jobs');
+Route::put('/dashboard/manage-jobs/edit', [\App\Http\Controllers\Dashboard\ManageJobsController::class, 'editJob'])->name('user.edit-jobs.edit');
+Route::delete('/dashboard/manage-jobs/{id}', [\App\Http\Controllers\Dashboard\ManageJobsController::class, 'delete'])->name('user.manage-jobs.delete');
 //Manage Applicant
-Route::get('/dashboard/manage-applicant', [\App\Http\Controllers\Admin\ManageApplicantController::class, 'index'])->name('user.manage-applicant');
-Route::get('/dashboard/manage-applicant/download-cv/{cv_name}', [\App\Http\Controllers\Admin\ManageApplicantController::class, 'downloadCv'])->name('user.manage-applicant.cv');
-Route::post('/dashboard/manage-applicant/accept', [\App\Http\Controllers\Admin\ManageApplicantController::class, 'accept'])->name('user.manage-applicant.accept');
-Route::post('/dashboard/manage-applicant/reject', [\App\Http\Controllers\Admin\ManageApplicantController::class, 'reject'])->name('user.manage-applicant.reject');
+Route::get('/dashboard/manage-applicant', [\App\Http\Controllers\Dashboard\ManageApplicantController::class, 'index'])->name('user.manage-applicant');
+Route::get('/dashboard/manage-applicant/download-cv/{cv_name}', [\App\Http\Controllers\Dashboard\ManageApplicantController::class, 'downloadCv'])->name('user.manage-applicant.cv');
+Route::post('/dashboard/manage-applicant/accept', [\App\Http\Controllers\Dashboard\ManageApplicantController::class, 'accept'])->name('user.manage-applicant.accept');
+Route::post('/dashboard/manage-applicant/reject', [\App\Http\Controllers\Dashboard\ManageApplicantController::class, 'reject'])->name('user.manage-applicant.reject');
 //Change Password
-Route::get('/dashboard/change-password', [\App\Http\Controllers\Admin\DashboardController::class, 'changePassword'])->name('change-password');
+Route::get('/dashboard/change-password', [\App\Http\Controllers\Dashboard\DashboardController::class, 'changePassword'])->name('change-password');
 Route::put('/dashboard/change-password', [\App\Http\Controllers\Auth\ChangePasswordController::class, 'changePassword'])->name('user.changePassword');

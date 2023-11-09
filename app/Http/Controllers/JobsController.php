@@ -89,7 +89,7 @@ class JobsController extends Controller
         $jobCategories = Category::getCategories();
         $experiences = Experience::getExperiences();
 
-        return view('admin.post-job')
+        return view('dashboard.post-job')
             ->with('jobTypes', $jobTypes)
             ->with('jobCategories', $jobCategories)
             ->with('experiences', $experiences);

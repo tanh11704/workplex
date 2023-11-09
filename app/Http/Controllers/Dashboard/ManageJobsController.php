@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
@@ -17,7 +17,7 @@ class ManageJobsController extends Controller
     //
     public function index() {
         $jobs = Job::where('user_id', auth()->user()->id)->paginate(6);
-        return view('admin.manage-jobs')
+        return view('dashboard.manage-jobs')
             ->with('jobs', $jobs);
     }
 
@@ -27,7 +27,7 @@ class ManageJobsController extends Controller
         $experiences = Experience::getExperiences();
         $job = Job::find($id);
 
-        return view('admin.edit-jobs')
+        return view('dashboard.edit-jobs')
             ->with('job', $job)
             ->with('jobTypes', $jobTypes)
             ->with('jobCategories', $jobCategories)

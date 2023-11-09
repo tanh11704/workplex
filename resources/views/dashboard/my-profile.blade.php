@@ -1,4 +1,4 @@
-@extends('admin.layouts.app')
+@extends('dashboard.layouts.app')
 
 @section('content')
     <div class="dashboard-content">
@@ -37,11 +37,11 @@
                                 <div class="col-12 col-md-3">
                                     <div class="custom-file avatar_uploads">
                                         <input
-                                            type="file"
-                                            name="avatar"
-                                            class="custom-file-input"
-                                            id="customFile"
-                                            onchange="updateLabel(this)"
+                                                type="file"
+                                                name="avatar"
+                                                class="custom-file-input"
+                                                id="customFile"
+                                                onchange="updateLabel(this)"
                                         />
                                         <label class="custom-file-label" for="customFile"
                                                style="background-image: url('{{ $user->getAvatarPath() }}')">
@@ -57,10 +57,10 @@
                                             <div class="form-group">
                                                 <label class="text-dark">Full Name</label>
                                                 <input
-                                                    type="text"
-                                                    name="name"
-                                                    class="form-control rounded"
-                                                    value="{{ $user->name }}"
+                                                        type="text"
+                                                        name="name"
+                                                        class="form-control rounded"
+                                                        value="{{ $user->name }}"
                                                 />
                                             </div>
                                         </div>
@@ -68,10 +68,10 @@
                                             <div class="form-group">
                                                 <label class="text-dark">Job Title</label>
                                                 <input
-                                                    type="text"
-                                                    name="job_title"
-                                                    class="form-control rounded"
-                                                    value="{{ $user->job_title }}"
+                                                        type="text"
+                                                        name="job_title"
+                                                        class="form-control rounded"
+                                                        value="{{ $user->job_title }}"
                                                 />
                                             </div>
                                         </div>
@@ -79,10 +79,10 @@
                                             <div class="form-group">
                                                 <label class="text-dark">Phone</label>
                                                 <input
-                                                    type="tel"
-                                                    name="phone"
-                                                    class="form-control rounded"
-                                                    value="{{ $user->phone }}"
+                                                        type="tel"
+                                                        name="phone"
+                                                        class="form-control rounded"
+                                                        value="{{ $user->phone }}"
                                                 />
                                             </div>
                                         </div>
@@ -90,9 +90,9 @@
                                             <div class="form-group">
                                                 <label class="text-dark">Email</label>
                                                 <input
-                                                    type="email"
-                                                    class="form-control rounded"
-                                                    value="{{ $user->email }}"
+                                                        type="email"
+                                                        class="form-control rounded"
+                                                        value="{{ $user->email }}"
                                                 />
                                             </div>
                                         </div>
@@ -148,10 +148,10 @@
                                             <div class="form-group">
                                                 <label class="text-dark">Education</label>
                                                 <input
-                                                    type="text"
-                                                    name="education"
-                                                    class="form-control rounded"
-                                                    value="{{ $user->education }}"
+                                                        type="text"
+                                                        name="education"
+                                                        class="form-control rounded"
+                                                        value="{{ $user->education }}"
                                                 />
                                             </div>
                                         </div>
@@ -159,10 +159,10 @@
                                             <div class="form-group">
                                                 <label class="text-dark">Current Salary</label>
                                                 <input
-                                                    type="text"
-                                                    name="current_salary"
-                                                    class="form-control rounded"
-                                                    value="{{ $user->current_salary }}"
+                                                        type="text"
+                                                        name="current_salary"
+                                                        class="form-control rounded"
+                                                        value="{{ $user->current_salary }}"
                                                 />
                                             </div>
                                         </div>
@@ -170,10 +170,10 @@
                                             <div class="form-group">
                                                 <label class="text-dark">Expected Salary</label>
                                                 <input
-                                                    type="text"
-                                                    name="expected_salary"
-                                                    class="form-control rounded"
-                                                    value="{{ $user->expected_salary }}"
+                                                        type="text"
+                                                        name="expected_salary"
+                                                        class="form-control rounded"
+                                                        value="{{ $user->expected_salary }}"
                                                 />
                                             </div>
                                         </div>
@@ -181,10 +181,10 @@
                                             <div class="form-group">
                                                 <label class="text-dark">Age</label>
                                                 <input
-                                                    type="number"
-                                                    name="age"
-                                                    class="form-control rounded"
-                                                    value="{{ $user->age }}"
+                                                        type="number"
+                                                        name="age"
+                                                        class="form-control rounded"
+                                                        value="{{ $user->age }}"
                                                 />
                                             </div>
                                         </div>
@@ -192,10 +192,10 @@
                                             <div class="form-group">
                                                 <label class="text-dark">Language</label>
                                                 <input
-                                                    type="text"
-                                                    name="language"
-                                                    class="form-control rounded"
-                                                    value="{{ $user->language }}"
+                                                        type="text"
+                                                        name="language"
+                                                        class="form-control rounded"
+                                                        value="{{ $user->language }}"
                                                 />
                                             </div>
                                         </div>
@@ -209,8 +209,8 @@
                                         <div class="col-lg-12">
                                             <div class="form-group">
                                                 <button
-                                                    type="submit"
-                                                    class="btn py-3 px-4 text-white rounded theme-bg"
+                                                        type="submit"
+                                                        class="btn py-3 px-4 text-white rounded theme-bg"
                                                 >
                                                     Save Changes
                                                 </button>
@@ -239,11 +239,11 @@
                                     <div class="form-group">
                                         <label class="text-dark">Facebook</label>
                                         <input
-                                            type="text"
-                                            name="facebook"
-                                            class="form-control rounded"
-                                            placeholder="https://www.facebook.com/"
-                                            value="{{ $user->facebook }}"
+                                                type="text"
+                                                name="facebook"
+                                                class="form-control rounded"
+                                                placeholder="https://www.facebook.com/"
+                                                value="{{ $user->facebook }}"
                                         />
                                     </div>
                                 </div>
@@ -251,11 +251,11 @@
                                     <div class="form-group">
                                         <label class="text-dark">Twitter</label>
                                         <input
-                                            type="text"
-                                            name="twitter"
-                                            class="form-control rounded"
-                                            placeholder="https://www.twitter.com/"
-                                            value="{{ $user->twitter }}"
+                                                type="text"
+                                                name="twitter"
+                                                class="form-control rounded"
+                                                placeholder="https://www.twitter.com/"
+                                                value="{{ $user->twitter }}"
                                         />
                                     </div>
                                 </div>
@@ -263,11 +263,11 @@
                                     <div class="form-group">
                                         <label class="text-dark">LinkedIn</label>
                                         <input
-                                            type="text"
-                                            name="linkedin"
-                                            class="form-control rounded"
-                                            placeholder="https://www.linkedin.com/"
-                                            value="{{ $user->linkedin}}"
+                                                type="text"
+                                                name="linkedin"
+                                                class="form-control rounded"
+                                                placeholder="https://www.linkedin.com/"
+                                                value="{{ $user->linkedin}}"
                                         />
                                     </div>
                                 </div>
@@ -275,19 +275,19 @@
                                     <div class="form-group">
                                         <label class="text-dark">Instagram</label>
                                         <input
-                                            type="text"
-                                            name="instagram"
-                                            class="form-control rounded"
-                                            placeholder="https://www.instagram.com/"
-                                            value="{{ $user->instagram }}"
+                                                type="text"
+                                                name="instagram"
+                                                class="form-control rounded"
+                                                placeholder="https://www.instagram.com/"
+                                                value="{{ $user->instagram }}"
                                         />
                                     </div>
                                 </div>
                                 <div class="col-xl-12 col-lg-12">
                                     <div class="form-group">
                                         <button
-                                            type="submit"
-                                            class="btn py-3 px-4 text-white rounded theme-bg"
+                                                type="submit"
+                                                class="btn py-3 px-4 text-white rounded theme-bg"
                                         >
                                             Save Changes
                                         </button>
@@ -313,11 +313,11 @@
                                     <div class="form-group">
                                         <label class="text-dark">Country</label>
                                         <input
-                                            type="text"
-                                            name="country"
-                                            class="form-control rounded"
-                                            placeholder="Việt Nam"
-                                            value="{{ $user->country }}"
+                                                type="text"
+                                                name="country"
+                                                class="form-control rounded"
+                                                placeholder="Việt Nam"
+                                                value="{{ $user->country }}"
                                         />
                                     </div>
                                 </div>
@@ -325,11 +325,11 @@
                                     <div class="form-group">
                                         <label class="text-dark">City</label>
                                         <input
-                                            type="text"
-                                            name="city"
-                                            class="form-control rounded"
-                                            placeholder="Đà Nẵng"
-                                            value="{{ $user->city }}"
+                                                type="text"
+                                                name="city"
+                                                class="form-control rounded"
+                                                placeholder="Đà Nẵng"
+                                                value="{{ $user->city }}"
                                         />
                                     </div>
                                 </div>
@@ -337,19 +337,19 @@
                                     <div class="form-group">
                                         <label class="text-dark">Full Address</label>
                                         <input
-                                            type="text"
-                                            name="full_address"
-                                            class="form-control rounded"
-                                            placeholder="Hoà Hải, Ngũ Hành Sơn, Đà Nẵng"
-                                            value="{{ $user->full_address }}"
+                                                type="text"
+                                                name="full_address"
+                                                class="form-control rounded"
+                                                placeholder="Hoà Hải, Ngũ Hành Sơn, Đà Nẵng"
+                                                value="{{ $user->full_address }}"
                                         />
                                     </div>
                                 </div>
                                 <div class="col-lg-12">
                                     <div class="form-group">
                                         <button
-                                            type="submit"
-                                            class="btn py-3 px-4 text-white rounded theme-bg"
+                                                type="submit"
+                                                class="btn py-3 px-4 text-white rounded theme-bg"
                                         >
                                             Save Changes
                                         </button>
@@ -384,8 +384,8 @@
                                 <div class="col-lg-12">
                                     <div class="form-group">
                                         <button
-                                            type="submit"
-                                            class="btn py-3 px-4 text-white rounded theme-bg"
+                                                type="submit"
+                                                class="btn py-3 px-4 text-white rounded theme-bg"
                                         >
                                             Save Changes
                                         </button>

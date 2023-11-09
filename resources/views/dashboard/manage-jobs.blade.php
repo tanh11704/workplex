@@ -1,4 +1,4 @@
-@extends('admin.layouts.app')
+@extends('dashboard.layouts.app')
 
 @section('content')
     <div class="dashboard-content">
@@ -65,7 +65,21 @@
                                                 </div>
                                             </div>
                                         </td>
-                                        <td>{{ $job->status }}</td>
+                                        <td>
+                                            @if($job->status == 'Active')
+                                                <div class="applicant-status text-center bg-light-success">
+                                                    <small class="text-success p-2">Active</small>
+                                                </div>
+                                            @elseif($job->status == 'Pending')
+                                                <div class="applicant-status text-center bg-light-subtle">
+                                                    <small class="text-warning p-2">Pending</small>
+                                                </div>
+                                            @elseif($job->status == 'Inject')
+                                                <div class="applicant-status text-center bg-light-danger">
+                                                    <small class="text-danger p-2">Inject</small>
+                                                </div>
+                                            @endif
+                                        </td>
                                         <td>
                                             @if($job->applicant_limit == $job->applicant_current)
                                                 <div class="dash-filled">

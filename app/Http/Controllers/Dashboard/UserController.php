@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
@@ -20,7 +20,7 @@ class UserController extends Controller
         $jobCategories = Category::getCategories();
         $experiences = Experience::getExperiences();
 
-        return (view('admin.my-profile'))
+        return (view('dashboard.my-profile'))
             ->with('user', $user)
             ->with('jobTypes', $jobTypes)
             ->with('jobCategories', $jobCategories)

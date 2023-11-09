@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 use App\Models\AppliedJob;
@@ -13,7 +13,7 @@ class AppliedJobsController extends Controller
 
     public function index() {
         $jobs = AppliedJob::where('user_id', Auth::user()->id)->paginate(6);
-        return view('admin.applied-jobs')
+        return view('dashboard.applied-jobs')
             ->with('jobs', $jobs);
     }
 

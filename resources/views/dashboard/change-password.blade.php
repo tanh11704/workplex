@@ -1,4 +1,4 @@
-@extends('admin.layouts.app')
+@extends('dashboard.layouts.app')
 
 @section('content')
     <div class="dashboard-content">
@@ -43,10 +43,10 @@
                                     <div class="form-group">
                                         <label class="text-dark">Old Password</label>
                                         <input
-                                            type="password"
-                                            name="current_password"
-                                            class="form-control rounded shadow-none"
-                                            placeholder=""
+                                                type="password"
+                                                name="current_password"
+                                                class="form-control rounded shadow-none"
+                                                placeholder=""
                                         />
                                     </div>
                                 </div>
@@ -54,10 +54,10 @@
                                     <div class="form-group">
                                         <label class="text-dark">New Password</label>
                                         <input
-                                            type="password"
-                                            name="new_password"
-                                            class="form-control rounded shadow-none"
-                                            placeholder=""
+                                                type="password"
+                                                name="new_password"
+                                                class="form-control rounded shadow-none"
+                                                placeholder=""
                                         />
                                     </div>
                                 </div>
@@ -65,18 +65,18 @@
                                     <div class="form-group">
                                         <label class="text-dark">Confirm Password</label>
                                         <input
-                                            type="password"
-                                            name="new_password_confirmation"
-                                            class="form-control rounded shadow-none"
-                                            placeholder=""
+                                                type="password"
+                                                name="new_password_confirmation"
+                                                class="form-control rounded shadow-none"
+                                                placeholder=""
                                         />
                                     </div>
                                 </div>
                                 <div class="col-xl-12 col-lg-12">
                                     <div class="form-group">
                                         <button
-                                            type="submit"
-                                            class="btn btn-md py-3 px-4 text-white rounded theme-bg"
+                                                type="submit"
+                                                class="btn btn-md py-3 px-4 text-white rounded theme-bg"
                                         >
                                             Save Changes
                                         </button>

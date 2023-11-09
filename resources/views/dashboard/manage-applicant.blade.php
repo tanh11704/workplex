@@ -1,4 +1,4 @@
-@extends('admin.layouts.app')
+@extends('dashboard.layouts.app')
 
 @section('content')
     <div class="dashboard-content">
@@ -57,19 +57,23 @@
                                         </div>
                                         <div>
                                             <div class="text-left pe-3 d-flex">
-                                                <form method="post" action="{{ route('user.manage-applicant.accept') }}">
+                                                <form method="post"
+                                                      action="{{ route('user.manage-applicant.accept') }}">
                                                     @csrf
                                                     <input type="hidden" name="user_id" value="{{ $applicant->id }}">
                                                     <input type="hidden" name="job_id" value="{{ $jobId }}">
-                                                    <button type="submit" class="me-2 agree-hover p-2 rounded-circle border-0">
+                                                    <button type="submit"
+                                                            class="me-2 agree-hover p-2 rounded-circle border-0">
                                                         <i class="lni lni-checkmark"></i>
                                                     </button>
                                                 </form>
-                                                <form method="post" action="{{ route('user.manage-applicant.reject') }}">
+                                                <form method="post"
+                                                      action="{{ route('user.manage-applicant.reject') }}">
                                                     @csrf
                                                     <input type="hidden" name="user_id" value="{{ $applicant->id }}">
                                                     <input type="hidden" name="job_id" value="{{ $jobId }}">
-                                                    <button type="submit" class="close-hover p-2 rounded-circle border-0">
+                                                    <button type="submit"
+                                                            class="close-hover p-2 rounded-circle border-0">
                                                         <i class="lni lni-close"></i>
                                                     </button>
                                                 </form>

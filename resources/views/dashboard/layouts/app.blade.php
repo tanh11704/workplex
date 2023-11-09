@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -18,18 +18,18 @@
 
     {{--    My Css Files --}}
     <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+          href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
     <!-- Themify Icons -->
-    <link href="{{ asset('assets/fonts/themify-icons.css') }}" rel="stylesheet" />
+    <link href="{{ asset('assets/fonts/themify-icons.css') }}" rel="stylesheet"/>
     <!-- Lineicons -->
-    <link rel="stylesheet" href="{{ asset('assets/fonts/lineicons.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/fonts/lineicons.css') }}"/>
     <!-- Font Awaresome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
     <!-- Slick.js -->
-    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
-    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
-    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}" />
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}"/>
     <title>Title</title>
 </head>
 <body>
@@ -40,9 +40,9 @@
 
     <!-- Start Dashboard -->
     <div class="dashboard-wrap bg-light">
-    @include('admin.layouts.sidebar')
+        @include('dashboard.layouts.sidebar')
 
-    @yield('content')
+        @yield('content')
 
     </div>
     <!-- End Dashboard -->

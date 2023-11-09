@@ -1,7 +1,7 @@
 <div class="header">
     <div class="container">
         <nav class="navbar navbar-expand-xl p-0">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="{{ '/' }}">
                 <img src="{{ asset('assets/img/logo.png') }}" alt="logo" />
             </a>
             <button class="navbar-toggler d-xl-none" type="button" data-bs-toggle="collapse"

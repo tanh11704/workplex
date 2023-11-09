@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 use App\Models\SavedJob;
@@ -13,7 +13,7 @@ class SavedJobsController extends Controller
 
     public function index() {
         $savedJobs = SavedJob::where('user_id', Auth::user()->id)->paginate(6);
-        return view('admin.bookmark-jobs')
+        return view('dashboard.bookmark-jobs')
             ->with('savedJobs', $savedJobs);
     }
 

@@ -39,7 +39,7 @@
                                     <select class="form-control shadow-none lg border-0" name="category">
                                         <option value="0">Choose Categories</option>
                                         @foreach($allCategories as $category)
-                                            <option value="{{ $category->id }}">{{ $category->title }}</option>
+                                            <option value="{{ $category->id }}">{{ $category->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
