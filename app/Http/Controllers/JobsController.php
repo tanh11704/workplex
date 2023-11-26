@@ -27,9 +27,9 @@ class JobsController extends Controller
         $name = $name ?? '';
 
         if ($category != 0) {
-            $jobs = Job::where('title', 'like', '%' . $name . '%')->where('category_id', $category)->where("status", "Active")->paginate(16);
+            $jobs = Job::where('title', 'like', '%' . $name . '%')->where('category_id', $category)->where("status", "Active")->where('user_id', '!=', Auth::id())->paginate(16);
         } else {
-            $jobs = Job::where('title', 'like', '%' . $name . '%')->where("status", "Active")->paginate(16);
+            $jobs = Job::where('title', 'like', '%' . $name . '%')->where("status", "Active")->where('user_id', '!=', Auth::id())->paginate(16);
         }
 
         return view('job-search')
@@ -69,6 +69,10 @@ class JobsController extends Controller
 
     public function applyJob(Request $request)
     {
+        $request->validate([
+            'cv' => 'required',
+        ]);
+
         $applyJob = new AppliedJob();
         $applyJob->job_id = $request->job_id;
         $applyJob->user_id = $request->user_id;
@@ -97,6 +101,21 @@ class JobsController extends Controller
 
     public function store(Request $request)
     {
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'company' => 'required|string|max:255',
+            'description' => 'required|string',
+            'category' => 'required|integer|exists:category,id',
+            'salary' => 'required|string',
+            'type' => 'required|integer|exists:job_type,id',
+            'experience' => 'required|integer|exists:experience,id',
+            'dealine' => 'required|date',
+            'country' => 'required|string|max:255',
+            'city' => 'required|string|max:255',
+            'full_address' => 'required|string',
+            'applicant_limit' => 'required|integer|min:1',
+            'job_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
         //image
         $originalFileName = $request->file('job_image')->getClientOriginalName();
         $fileName = pathinfo($originalFileName, PATHINFO_FILENAME);

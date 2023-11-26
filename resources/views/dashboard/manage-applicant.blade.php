@@ -10,29 +10,26 @@
             </div>
         </div>
 
-        @if(isset($applicants))
+        @if (isset($applicants))
             <div class="dashboard-widg-bar d-block">
                 <div class="row">
                     <div class="col-md-12">
                         <div class="px-3 py-4 bg-white rounded mb-3">
-                  <span class="mb-0 fw-bold text-dark">
-                    {{ $applicants->count() }} New Applicants Found
-                  </span>
+                            <span class="mb-0 fw-bold text-dark">
+                                {{ $applicants->count() }} New Applicants Found
+                            </span>
                         </div>
 
                         <div class="data-applicants">
-                            @foreach($applicants as $applicant)
+                            @foreach ($applicants as $applicant)
                                 <!-- Item -->
                                 <div class="applicant-wrap bg-white rounded mb-3">
                                     <div class="applicant-full bg-white rounded p-3 mb-3">
                                         <div class="d-flex align-items-center">
                                             <div>
-                                                <img
-                                                    src="{{ $applicant->getAvatarPath() }}"
-                                                    class="img-fluid rounded-circle"
-                                                    style="width: 70px; height: 70px;"
-                                                    alt=""
-                                                />
+                                                <img src="{{ $applicant->getAvatarPath() }}"
+                                                     class="img-fluid rounded-circle" style="width: 70px; height: 70px;"
+                                                     alt=""/>
                                             </div>
                                             <div>
                                                 <div class="px-2">
@@ -42,14 +39,13 @@
                                                             <i class="lni lni-map-marker me-1"></i>{{ $applicant->country }}
                                                         </small>
                                                         <small class="ms-2">
-                                                            <i class="lni lni-briefcase me-1"></i>{{ $applicant->job_title }}
+                                                            <i
+                                                                class="lni lni-briefcase me-1"></i>{{ $applicant->job_title }}
                                                         </small>
                                                     </div>
-                                                    <a
-                                                        download
-                                                        href="{{ route('user.manage-applicant.cv', str_replace('cvs/', '', $applicant->cv)) }}"
-                                                        class="px-2 py-1 bg-light-success rounded theme-cl"
-                                                    >
+                                                    <a download
+                                                       href="{{ route('user.manage-applicant.cv', str_replace('cvs/', '', $applicant->cv)) }}"
+                                                       class="px-2 py-1 bg-light-success rounded theme-cl">
                                                         <i class="lni lni-download me-1"></i>Download CV
                                                     </a>
                                                 </div>
@@ -60,7 +56,7 @@
                                                 <form method="post"
                                                       action="{{ route('user.manage-applicant.accept') }}">
                                                     @csrf
-                                                    <input type="hidden" name="user_id" value="{{ $applicant->id }}">
+                                                    <input type="hidden" name="user_id" value="{{ $applicant->user_id }}">
                                                     <input type="hidden" name="job_id" value="{{ $jobId }}">
                                                     <button type="submit"
                                                             class="me-2 agree-hover p-2 rounded-circle border-0">
@@ -70,7 +66,7 @@
                                                 <form method="post"
                                                       action="{{ route('user.manage-applicant.reject') }}">
                                                     @csrf
-                                                    <input type="hidden" name="user_id" value="{{ $applicant->id }}">
+                                                    <input type="hidden" name="user_id" value="{{ $applicant->user_id }}">
                                                     <input type="hidden" name="job_id" value="{{ $jobId }}">
                                                     <button type="submit"
                                                             class="close-hover p-2 rounded-circle border-0">
@@ -81,26 +77,27 @@
                                         </div>
                                     </div>
                                     <div class="applicant-footer p-3 br-top">
-                                        @php
-                                            $appliedJob = $applicant->appliedJobs->where('job_id', $jobId)->first();
-                                        @endphp
-                                        @if($appliedJob->status == 'Pending')
+{{--                                        @php--}}
+{{--                                            $appliedJob = $applicant->appliedJobs->where('job_id', $jobId)->first();--}}
+{{--                                        @endphp--}}
+                                        @if ($applicant->status == 'Pending')
                                             <div class="applicant-status bg-light-info">
                                                 <small class="text-info p-2">Pending</small>
                                             </div>
-                                        @elseif($appliedJob->status == 'Trashed')
+                                        @elseif($applicant->status == 'Trashed')
                                             <div class="applicant-status bg-light-danger">
                                                 <small class="text-danger p-2">Trashed</small>
                                             </div>
-                                        @elseif($appliedJob->status == 'Active')
+                                        @elseif($applicant->status == 'Active')
                                             <div class="applicant-status bg-light-success">
                                                 <small class="text-success p-2">Active</small>
                                             </div>
                                         @endif
                                         <div class="applied-date">
-                        <span>
-                          <i class="lni lni-calendar me-1"></i> {{ $appliedJob->created_at->format('d M, Y') }}
-                        </span>
+                                            <span>
+                                                <i class="lni lni-calendar me-1"></i>
+                                                {{ $applicant->created_at->format('d M, Y') }}
+                                            </span>
                                         </div>
                                     </div>
                                 </div>
@@ -112,7 +109,7 @@
         @endif
     </div>
 
-    @if(isset($jobs))
+    @if (isset($jobs))
         <div class="modal fade" id="jobModal" tabindex="-1" role="dialog" aria-labelledby="jobModalLabel"
              data-backdrop="static">
             <div class="modal-dialog" role="document">
@@ -122,9 +119,9 @@
                     </div>
                     <div class="modal-body">
                         <ol>
-                            @foreach($jobs as $job)
-                                <li class="fs-5"><a
-                                        href="{{ route('user.manage-applicant', ['job_id' => $job->id]) }}"> {{ $job->title }} </a>
+                            @foreach ($jobs as $job)
+                                <li class="fs-5"><a href="{{ route('user.manage-applicant', ['job_id' => $job->id]) }}">
+                                        {{ $job->title }} </a>
                                 </li>
                             @endforeach
 

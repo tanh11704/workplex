@@ -4,20 +4,28 @@
     <!-- Start JobTitle -->
     <div style="margin-top: -24px" class="bg-light rounded py-5">
         <div class="container">
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
             <div class="row">
                 <div class="col-12">
                     <div class="d-flex align-items-center justify-content-between">
                         <div class="d-flex align-items-center justify-content-start">
                             <div class="thumb">
-                                <img src="{{ $job->getJobPath() }}" class="img-fluid" width="100"
-                                     alt=""/>
+                                <img src="{{ $job->getJobPath() }}" class="img-fluid" width="100" alt="" />
                             </div>
                             <div class="caption ps-3">
                                 <div class="title">
                                     <h4 class="mb-0 fs-6">
                                         {{ $job->title }}
                                         <img src="{{ asset('assets/img/verify.svg') }}" class="ms-1" width="12"
-                                             alt=""/>
+                                            alt="" />
                                     </h4>
                                 </div>
                                 <div class="location mb-3">
@@ -46,12 +54,12 @@
                                     <input type="hidden" name="cv" value="{{ Auth::user()->cv }}">
                                     @if ($appliedJob > 0 || $job->applicant_limit == $job->applicant_current)
                                         <button href="#" class="btn py-3 px-4 rounded theme-cl fs-6 shadow-none"
-                                                style="background-color: rgba(40, 182, 97, 0.11)" disabled>
+                                            style="background-color: rgba(40, 182, 97, 0.11)" disabled>
                                             Job Applied
                                         </button>
                                     @else
                                         <button href="#" class="btn py-3 px-4 rounded theme-cl fs-6 shadow-none"
-                                                style="background-color: rgba(40, 182, 97, 0.11)">
+                                            style="background-color: rgba(40, 182, 97, 0.11)">
                                             Apply This Job
                                         </button>
                                     @endif
@@ -82,7 +90,7 @@
                                 <h6 class="text-black">Requirements:</h6>
                                 <div class="position-relative row">
                                     <div class="col-12">
-                                        @foreach($job->requirements as $requirement)
+                                        @foreach ($job->requirements as $requirement)
                                             <div class="mb-2 me-4 ms-lg-0 me-lg-4">
                                                 <div class="d-flex align-items-center">
                                                     <div
@@ -102,38 +110,32 @@
                                 <div class="mb-2">
                                     <form style="display: inline" action="{{ route('jobs.save') }}" method="post">
                                         @csrf
-                                        <input type="hidden" name="job_id" type="text"
-                                               value="{{ $job->id }}">
-                                        <input type="hidden" name="user_id" type="text"
-                                               value="{{ Auth::user()->id }}">
+                                        <input type="hidden" name="job_id" type="text" value="{{ $job->id }}">
+                                        <input type="hidden" name="user_id" type="text" value="{{ Auth::user()->id }}">
                                         @if ($savedJob > 0)
                                             <button type="submit" style="background-color: #eef7f8"
-                                                    class="btn btn-lg rounded fs-6 ft-medium me-2 py-3 px-4 border-0"
-                                                    disabled>
+                                                class="btn btn-lg rounded fs-6 ft-medium me-2 py-3 px-4 border-0" disabled>
                                                 Job Saved
                                             </button>
                                         @else
                                             <button type="submit" style="background-color: #eef7f8"
-                                                    class="btn btn-lg rounded fs-6 ft-medium me-2 py-3 px-4">
+                                                class="btn btn-lg rounded fs-6 ft-medium me-2 py-3 px-4">
                                                 Save This Job
                                             </button>
                                         @endif
                                     </form>
                                     <form style="display:inline;" action="{{ route('jobs.apply') }}" method="post">
                                         @csrf
-                                        <input type="hidden" name="job_id" type="text"
-                                               value="{{ $job->id }}">
-                                        <input type="hidden" name="user_id" type="text"
-                                               value="{{ Auth::user()->id }}">
+                                        <input type="hidden" name="job_id" type="text" value="{{ $job->id }}">
+                                        <input type="hidden" name="user_id" type="text" value="{{ Auth::user()->id }}">
                                         <input type="hidden" name="cv" value="{{ Auth::user()->cv }}">
                                         @if ($appliedJob > 0 || $job->applicant_limit == $job->applicant_current)
-                                            <button class="btn btn-lg rounded theme-bg text-light fs-6 py-3 px-4"
-                                                    disabled>
+                                            <button class="btn btn-lg rounded theme-bg text-light fs-6 py-3 px-4" disabled>
                                                 Job Applied
                                             </button>
                                         @else
                                             <button type="submit"
-                                                    class="btn btn-lg rounded theme-bg text-light fs-6 py-3 px-4">
+                                                class="btn btn-lg rounded theme-bg text-light fs-6 py-3 px-4">
                                                 Apply Job
                                             </button>
                                         @endif
@@ -167,7 +169,7 @@
                             <div class="mb-3 pt-5 px-3">
                                 <a href="{{ url('single-job/' . $job->id) }}" class="d-block text-center m-auto">
                                     <img src="{{ $job->getJobPath() }}" class="img-fluid" width="70"
-                                         alt=""/>
+                                        alt="" />
                                 </a>
                             </div>
                             <div class="text-center pb-4 px-3">

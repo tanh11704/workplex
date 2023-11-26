@@ -17,6 +17,11 @@ class Role extends Model
         'role',
     ];
 
+    public static function getRoles()
+    {
+        return static::pluck('role', 'id')->all();
+    }
+
     public function users() {
         return $this->hasMany(User::class, 'role_id');
     }

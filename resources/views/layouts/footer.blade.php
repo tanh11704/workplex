@@ -4,11 +4,7 @@
             <div class="row">
                 <div class="col-12 col-md-4">
                     <div class="py-5">
-                        <img
-                            src="./img/logo.png"
-                            class="img-footer small mb-2"
-                            alt=""
-                        />
+                        <img src="./img/logo.png" class="img-footer small mb-2" alt="" />
                         <div class="mt-2">
                             3298 Grant Street Longview, New Texox
                             <br />

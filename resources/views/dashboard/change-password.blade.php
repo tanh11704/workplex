@@ -26,13 +26,13 @@
                                 @method('put')
                                 <div class="col-xl-8 col-lg-9 col-12">
 
-                                    @if(session('error'))
+                                    @if (session('error'))
                                         <div class="alert alert-danger text-center">
                                             <strong>Lỗi!</strong> {{ session('error') }}
                                         </div>
                                     @endif
 
-                                    @if(session('success'))
+                                    @if (session('success'))
                                         <div class="alert alert-success text-center">
                                             <strong>Thành công!</strong> {{ session('success') }}
                                         </div>
@@ -42,42 +42,27 @@
                                 <div class="col-xl-8 col-lg-9 col-12">
                                     <div class="form-group">
                                         <label class="text-dark">Old Password</label>
-                                        <input
-                                                type="password"
-                                                name="current_password"
-                                                class="form-control rounded shadow-none"
-                                                placeholder=""
-                                        />
+                                        <input type="password" name="current_password"
+                                            class="form-control rounded shadow-none" placeholder="" />
                                     </div>
                                 </div>
                                 <div class="col-xl-8 col-lg-9 col-12">
                                     <div class="form-group">
                                         <label class="text-dark">New Password</label>
-                                        <input
-                                                type="password"
-                                                name="new_password"
-                                                class="form-control rounded shadow-none"
-                                                placeholder=""
-                                        />
+                                        <input type="password" name="new_password" class="form-control rounded shadow-none"
+                                            placeholder="" />
                                     </div>
                                 </div>
                                 <div class="col-xl-8 col-lg-9 col-12">
                                     <div class="form-group">
                                         <label class="text-dark">Confirm Password</label>
-                                        <input
-                                                type="password"
-                                                name="new_password_confirmation"
-                                                class="form-control rounded shadow-none"
-                                                placeholder=""
-                                        />
+                                        <input type="password" name="new_password_confirmation"
+                                            class="form-control rounded shadow-none" placeholder="" />
                                     </div>
                                 </div>
                                 <div class="col-xl-12 col-lg-12">
                                     <div class="form-group">
-                                        <button
-                                                type="submit"
-                                                class="btn btn-md py-3 px-4 text-white rounded theme-bg"
-                                        >
+                                        <button type="submit" class="btn btn-md py-3 px-4 text-white rounded theme-bg">
                                             Save Changes
                                         </button>
                                     </div>
